@@ -29,3 +29,6 @@ cd backend-java
 ### Django
 cd backend-django
 python manage.py runserver
+
+
+--test

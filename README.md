@@ -32,3 +32,5 @@ python manage.py runserver
 
 
 --test
+
+--test2

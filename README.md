@@ -13,3 +13,19 @@ python manage.py runserver
 - /           root check
 - /healthz/   health check
 - /admin/     django admin
+
+
+
+## 開発ルール
+- main / develop 直編集禁止
+- feature ブランチ必須
+- PR必須
+
+## 起動方法
+### Java
+cd backend-java
+./gradlew bootRun
+
+### Django
+cd backend-django
+python manage.py runserver

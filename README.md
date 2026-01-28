@@ -4,7 +4,7 @@
 ```bash
 python -m venv venv
 source venv/bin/activate
-pip install django==6.0.1
+pip install django==5.0.3
 python manage.py migrate
 python manage.py runserver
 ```

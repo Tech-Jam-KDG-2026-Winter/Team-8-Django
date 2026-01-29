@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tec-jam(team8)</title>
+  {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+
+
+<body>
+  <header>
+    <div class="top-1">
+      <div class="user">
+      <h1><a href="">ヘルスアプリ</a></h1>
+      </div>
+      <div class="user">
+        <div class="icon-img">
+          <a href=""><img src="{% static 'images/mypage.svg' %}" alt="icon" width="24" height="24"></a>
+        </div>
+        {% if use.is_authenticated %}
+        <a href=""><p><!--{{ user }}さん-->田中さん</p></a>
+        {% else %}
+        <a href=""><p>ゲストさん</p></a>
+        {% endif %}
+      </div>
+    </div>
+    
+  {% block content %}
+  {% endblock %}
+
+    <div class="top-2">
+      <nav>
+        <a class="homelink" href=""><img src="{% static 'icons/home.svg' %}" alt="ホームアイコン" width="24"
+            height="24">ホーム</a>
+        <a class="categorylink" href=""><img src="{% static 'icons/detail.svg' %}" alt="メモアイコン" width="24"
+            height="24">献立詳細</a>
+        <a class="expenselink" href=""><img src="{% static 'icons/mypage.svg' %}" alt="マイページアイコン" width="24" height="24">マイページ</a>
+      </nav>
+    </div>
+  </header>
+</body>
+
+
+</html>

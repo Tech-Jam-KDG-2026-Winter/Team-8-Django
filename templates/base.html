@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tec-jam(team8)</title>
+  {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+
+
+<body>
+  <header>
+    <div class="top-1">
+      <div class="user">
+      <h1><a href="{% url 'home' %}">Quist</a></h1>
+      </div>
+      <div class="user">
+        <div class="icon-img">
+          <a href="{% url 'setting' %}"><img src="{% static 'icons/icon.svg' %}" alt="icon" width="24" height="24"></a>
+        </div>
+        {% if use.is_authenticated %}
+        <a href="{% url 'setting' %}"><p>{{ user }}さん</p></a>
+        {% else %}
+        <a href="{% url 'setting' %}"><p>ゲストさん</p></a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="top-2">
+      <nav>
+        <a class="homelink" href="{% url 'home' %}"><img src="{% static 'icons/icon1.svg' %}" alt="ホームアイコン" width="24"
+            height="24">ホーム</a>
+    <a class="categorylink" href="{% url 'category' %}"><img src="{% static 'icons/icon2.svg' %}" alt="カテゴリアイコン" width="24"
+            height="24">カテゴリ分け</a>
+        <a class="expenselink" href="{% url 'expense' %}"><img src="{% static 'icons/icon3.svg' %}" alt="支出アイコン" width="24" height="24">支出</a>
+        <a class="achievement_ratelink" href="{% url 'achievement-rate' %}"><img src="{% static 'icons/icon4.svg' %}" alt="達成率アイコン" width="24" height="24">達成率</a>
+        <a class="settinglink" href="{% url 'setting' %}"><img src="{% static 'icons/icon5.svg' %}" alt="設定アイコン" width="24" height="24">設定</a>
+      </nav>
+    </div>
+  </header>
+  {% block content %}
+  {% endblock %}
+</body>
+
+
+</html>

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Recipe
 
 @login_required
-def recipe_create(request):
+def create_view(request):
     if request.method == 'POST':
         Recipe.objects.create(
             user=request.user,

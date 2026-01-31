@@ -23,3 +23,10 @@ def create_view(request):
 
     # 投稿画面を表示
     return render(request, 'contents/post.html') # あなたが作っているHTMLのパス
+
+# apps/contents/views.py に追記
+def index_view(request):
+    # すべての投稿を、新しい順（-created_at）に取得
+    posts = MenuPost.objects.all().order_by('-created_at')
+    # index.html に 'posts' という名前でデータを渡す
+    return render(request, 'contents/index.html', {'posts': posts})

@@ -5,33 +5,36 @@ from django.conf import settings
 from apps.core.models import Recipe
 
 class Command(BaseCommand):
-  help = 'CSVからデータレシピを読み込む'
+    help = 'CSVからレシピを読み込む'
 
-  def handle(self, * args, **options):
-    file_path = os.path.join(settings.BASE_DIR, 'data.csv')
+    def handle(self, *args, **options):
+        file_path = os.path.join(settings.BASE_DIR, 'data.csv')
 
-    if not os.path.exists(file_path):
-      self.stdout.write(self.style.ERROR(f'data.csv が見つかりません。'))
-      return
-    
-    #既存データをリセット(重複防止)
-    Recipe.objects.all().delete()
+        if not os.path.exists(file_path):
+            self.stdout.write(self.style.ERROR('data.csv がありません！'))
+            return
+        
+        Recipe.objects.all().delete()
+        
+        recipes_list = []
+        with open(file_path, 'r', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                recipes_list.append(Recipe(
+                    title=row['料理名'],
+                    description=row['説明'],
+                    
+                    # ★ここだ！CSVの「材料」「手順」をDBに入れる
+                    ingredients=row['材料'],
+                    steps=row['手順'],
+                    
+                    calories=int(row['カロリー']),
+                    protein=float(row['タンパク質']),
+                    fat=float(row['脂質']),
+                    carbs=float(row['炭水化物']),
+                    category=row['カテゴリ'],
+                    image=None
+                ))
 
-    recipes_list = []
-    with open(file_path, 'r', encoding='utf-8') as file:
-      reader = csv.DictReader(file)
-      for row in reader:
-        recipes_list.append(Recipe(
-          title=row['料理名'],
-          description=row['説明'],
-          calories=int(row['カロリー']),
-          protein=float(row['タンパク質']),
-          fat=float(row['脂質']),
-          carbs=float(row['炭水化物']),
-          category=row['カテゴリ'],
-          image=row['画像パス']#CSVのパスをそのまま登録
-        ))
-
-    # 一括登録(高速化)
-    Recipe.objects.bulk_create(recipes_list)
-    self.stdout.write(self.style.SUCCESS(f'{len(recipes_list)}件のレシピを取り込みました！'))
+        Recipe.objects.bulk_create(recipes_list)
+        self.stdout.write(self.style.SUCCESS(f'成功！ {len(recipes_list)}件のレシピ(手順付き)を取り込みました！'))

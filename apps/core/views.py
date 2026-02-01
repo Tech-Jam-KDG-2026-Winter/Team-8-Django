@@ -11,8 +11,8 @@ def recommend_view(request):
     # --- 1. 基礎代謝と必要カロリー ---
     target_calories = 2000 
     
-    if hasattr(user, 'profile'):
-        p = user.profile
+    if hasattr(user, 'health_profile'):  
+        p = user.health_profile
         if p.weight and p.height and p.age and p.gender:
             if p.gender == 'male':
                 bmr = 66.5 + (13.75 * p.weight) + (5.003 * p.height) - (6.75 * p.age)

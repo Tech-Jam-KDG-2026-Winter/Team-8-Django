@@ -5,9 +5,12 @@ import datetime
 User = get_user_model()
 
 class Recipe(models.Model):
-    # 料理・献立データ
     title = models.CharField('料理名', max_length=100)
-    description = models.TextField('説明', blank=True)
+    description = models.TextField('料理の紹介文', blank=True) 
+
+    ingredients = models.TextField('材料・分量', help_text='例：豚肉 100g（改行して入力）', blank=True)
+    steps = models.TextField('作り方手順', help_text='例：1. 野菜を切る（改行して入力）', blank=True)
+
     calories = models.IntegerField('カロリー(kcal)')
     protein = models.FloatField('タンパク質(g)', default=0)
     fat = models.FloatField('脂質(g)', default=0)

@@ -113,9 +113,12 @@ def dashboard_view(request):
     if hasattr(user, 'health_profile'):
         target_score = user.health_profile.target_score
 
+    points_to_target = max(0, target_score - score)
+
     context = {
         'score': score,
         'target_score': target_score,
+        'points_to_target': points_to_target,
         'advice_list': advice_list,
         'daily_log': daily_log, 
     }

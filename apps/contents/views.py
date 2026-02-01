@@ -12,17 +12,13 @@ def create_view(request):
             title=request.POST.get('name'),
             ingredients=request.POST.get('ingredients'),
             recipe=request.POST.get('recipe'),
-            calories=request.POST.get('calories') or 0,
-            protein=request.POST.get('protein') or 0,
-            fat=request.POST.get('fat') or 0,
-            carbs=request.POST.get('carbs') or 0,
             image=request.FILES.get('image'),
     )
-    # 保存した投稿のID(pk)を使って、詳細画面(detail)へリダイレクト！
-    return redirect('contents:detail', pk=post.pk)
+        # 保存した投稿のID(pk)を使って、詳細画面(detail)へリダイレクト！
+        return redirect('contents:detail', pk=post.pk)
 
     # 投稿画面を表示
-    return render(request, 'contents/post.html') # あなたが作っているHTMLのパス
+    return render(request, 'contents/post-betail.html') 
 
 # apps/contents/views.py に追記
 def index_view(request):

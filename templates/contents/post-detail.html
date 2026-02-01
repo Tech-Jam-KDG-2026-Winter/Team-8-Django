@@ -1,0 +1,97 @@
+<!--  -->
+
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tec-jam(team8)</title>
+  <!-- {% load static %} -->
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/post-detail.css"><!-- {% static 'css/style.css' %} -->
+  <!-- {% block extra_css %}{% endblock %} -->
+</head>
+
+
+<body>
+  <header>
+    <div class="top">
+
+      <div class="user-1">
+        <h1><a href="#"><img src="static/images/logo.svg" alt="app-loogo" width="160" height="50"></a></h1>
+        <p>頑張らなくても、毎日の食事だけで健康に。</p>
+      </div>
+
+      <div class="user">
+        <div class="icon-img">
+          <!-- {% if use.is_authenticated %} -->
+          <a href="mypage.html"><img src="static/images/account.svg" alt="icon" width="60"
+              height="60"></a><!-- {% user_icon %} -->
+          <!-- {% else %} -->
+          <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
+          <!-- {% endif %} -->
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
+  <!-- {% block content %} -->
+  <main>
+    <div class="post-detail-main">
+
+
+      <div class="post-detail-container-1">
+        <img src="static/images/giraffe.png" alt="cooking-image">
+      </div>
+
+      <div class="post-detail-container-2">
+        <div class="post-detail-item">
+          <div class="user-name">
+            <h2>@user_name{{ user_name }}</h2>
+          </div>
+          <div class="post-detail-all">
+            {{ post_detail_all }}
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- {% endblock %} -->
+  <!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 -->
+
+      <div class="bottom-1">
+      <button type="submit">
+        投稿！
+      </button>
+    </div>
+    
+  <footer>
+    <div class="bottom-2">
+      <nav>
+        <a class="homelink" href="home.html"><img src="static/images/home.svg" alt="ホームアイコン" width="24"
+            height="24">ホーム</a><!-- {% static 'icons/home.svg' %} -->
+        <a class="detaillink" href="detail.html"><img src="static/images/detail.svg" alt="メモアイコン" width="24"
+            height="24">献立詳細</a><!-- {% static 'icons/detail.svg' %} -->
+        <a class="mypagelink" href="mypage.html"><img src="static/images/mypage.svg" alt="マイページアイコン" width="24"
+            height="24">マイページ</a><!-- {% static 'icons/mypage.svg' %} -->
+        <a class="postlink" href="post.html"><img src="static/images/post.svg" alt="投稿アイコン" width="24"
+            height="24">投稿</a><!-- {% static 'icons/post.svg' %} -->
+      </nav>
+    </div>
+  </footer>
+</body>
+
+
+</html>

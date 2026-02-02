@@ -9,11 +9,10 @@ def create_view(request):
     # .create() の戻り値を post という変数で受け取る
         post = MenuPost.objects.create(
             user=request.user,
-            title=request.POST.get('name'),
-            ingredients=request.POST.get('ingredients'),
-            recipe=request.POST.get('recipe'),
-            image=request.FILES.get('image'),
-    )
+            title=request.POST.get('name'),    
+            recipe=request.POST.get('recipe'), 
+            image=request.FILES.get('image'),  
+        )
         # 保存した投稿のID(pk)を使って、詳細画面(detail)へリダイレクト！
         return redirect('contents:detail', pk=post.pk)
 

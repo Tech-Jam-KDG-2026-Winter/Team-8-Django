@@ -45,25 +45,28 @@
     <div class="post-title">
       <h2>投稿</h2>
     </div>
-    <form method="POST">
-      <!-- {% csrf_token %} -->
-      <!-- {% for error in form.errors.values %} -->
-      <!-- {{ error }} -->
-      <!-- {% endfor %} -->
-      <div class="post-item">
+  
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %} <div class="post-item">
+        <div class="user-input">
+          <label>料理名</label>
+          <input type="text" name="name" placeholder="料理名を入力してください" required>
+        </div>
+  
         <div class="user-input">
           <label>写真</label>
           <input type="file" name="image" accept="image/*">
         </div>
+  
         <div class="user-input">
-          <label>テキスト</label>
-          <textarea name="recipe" placeholder="文字を入力してください"></textarea>
+          <label>作り方・材料など</label>
+          <textarea name="recipe" rows="10" placeholder="自由に内容を入力してください"></textarea>
         </div>
       </div>
+  
       <div class="post-button">
-        <button type="submit"><a href="home.html">投稿する！</a></button>
+        <button type="submit">投稿する！</button>
       </div>
-
     </form>
   </div>
 

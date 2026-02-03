@@ -1,6 +1,6 @@
 <!--  -->
 
-{% load static %}
+<!-- {% load static %} -->
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -10,67 +10,57 @@
   <title>tec-jam(team8)</title>
   <!-- {% load static %} -->
   <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/post-detail.css"><!-- {% static 'css/style.css' %} -->
+  <link rel="stylesheet" href="static/css/info.css"><!-- {% static 'css/style.css' %} -->
   <!-- {% block extra_css %}{% endblock %} -->
 </head>
 
 
 <body>
-  <header>
-    <div class="top">
+<header>
+    <div class="user-1">
+        <div class="score-txt">今日のスコア</div>
+        <div class="score-img"><img src="static/images/homescore.png" alt=""><!--{{ graph }}--></div>
+    </div>
 
-      <div class="user-1">
-        <h1><a href="#"><img src="static/images/logo.svg" alt="app-loogo" width="160" height="50"></a></h1>
+    <div class="user-2">
+      <div class="header-main-1">
+        <a href="#"><img src="static/images/logo.svg" alt="app-loogo"></a>
         <p>頑張らなくても、毎日の食事だけで健康に。</p>
       </div>
-
-      <div class="user">
-        <div class="icon-img">
-          <!-- {% if use.is_authenticated %} -->
-          <a href="mypage.html"><img src="static/images/account.svg" alt="icon" width="60"
-              height="60"></a><!-- {% user_icon %} -->
-          <!-- {% else %} -->
-          <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
-          <!-- {% endif %} -->
-        </div>
+      <div class="header-main-2">
+        <!-- {% if use.is_authenticated %} -->
+        <a href="mypage.html"><img src="static/images/account.svg" alt="icon"></a><!-- {% user_icon %} -->
+        <!-- {% else %} -->
+        <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
+        <!-- {% endif %} -->
       </div>
-
     </div>
-  </header>
+</header>
 
   <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
-  {% block content %}
-  <main class="post-section">
-    <div class="post-title">
-      <h2>献立詳細</h2>
-    </div>
+  <!-- {% block content %} -->
 
-    <div class="post-item">
-      <div class="user-input">
-        <label><strong>写真</strong></label>
-        <div>
-          {% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 100%; border-radius: 8px;">
-          {% else %}
-            <p>写真はありません</p>
-          {% endif %}
-        </div>
-      </div>
-      <div class="user-input">
-        <label><strong>作り方・材料など</strong></label>
-        <p style="white-space: pre-wrap;">{{ post.recipe }}</p>
-      </div>
+  <div class="info-section">
+    <div class="info-logo">
+      <img src="static/images/logo.svg" alt="logo">
     </div>
-  </main>
-  {% endblock %}
+    <div class="login-button">
+      <button type="submit"><a href="login.html">ログイン</a></button>
+    </div>
+    <div class="signup-button">
+      <button type="submit"><a href="signin.html">新規登録</a></button>
+    </div>
+  </div>
+
+  <!-- {% endblock %} -->
   <!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 -->
 
-      <div class="bottom-1">
-      <button type="submit">
-        投稿！
-      </button>
-    </div>
-    
+  <div class="bottom-1">
+    <button type="submit">
+      投稿！
+    </button>
+  </div>
+
   <footer>
     <div class="bottom-2">
       <nav>

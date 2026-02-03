@@ -10,7 +10,7 @@
   <title>tec-jam(team8)</title>
   <!-- {% load static %} -->
   <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/detail.css"><!-- {% static 'css/style.css' %} -->
+  <link rel="stylesheet" href="static/css/post-detail.css"><!-- {% static 'css/style.css' %} -->
   <!-- {% block extra_css %}{% endblock %} -->
 </head>
 
@@ -40,44 +40,26 @@
   <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
   <!-- {% block content %} -->
   <main>
-    <div class="detail-main">
+    <div class="post-detail-main">
 
 
-      <div class="cook-container-1">
+      <div class="post-detail-container-1">
         <img src="static/images/giraffe.png" alt="cooking-image">
       </div>
 
-      <div class="cook-container-2">
-        <div class="cook-item">
-          <div class="cooking-name">
-            <h2>料理名{{ name_detail }}</h2>
+      <div class="post-detail-container-2">
+        <div class="post-detail-item">
+          <div class="user-name">
+            <h2>@user_name{{ user_name }}</h2>
           </div>
-          <div class="material">
-            <h2>材料</h2>
-            <ul>
-              <!--  {% for item in materials %}  -->
-              <li>・{{ material }} / {{ material_num }}</li>
-              <li>・{{ material }} / {{ material_num }}</li>
-              <li>・{{ material }} / {{ material_num }}</li>
-              <li>・{{ material }} / {{ material_num }}</li>
-              <li>・{{ material }} / {{ material_num }}</li>
-              <!--  {% endfor %}  -->
-            </ul>
-          </div>
-          <div class="recipe">
-            <h2>レシピ</h2>
-            <ul>
-              <!--  {% for item in recipes %}  -->
-              <li>１　{{ recipe }}</li>
-              <li>２　{{ recipe }}</li>
-              <li>３　{{ recipe }}</li>
-              <li>４　{{ recipe }}</li>
-              <li>５　{{ recipe }}</li>
-              <li>６　{{ recipe }}</li>
-              <li>７　{{ recipe }}</li>
-              <li>８　{{ recipe }}</li>
-              <!--  {% endfor %}  -->
-            </ul>
+          <div class="post-detail-all">
+            {{ post_detail_all }}
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
           </div>
         </div>
       </div>
@@ -85,11 +67,9 @@
 
   </main>
 
-
-
   <!-- {% endblock %} -->
   <!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 -->
-
+    
   <footer>
     <div class="bottom-2">
       <nav>

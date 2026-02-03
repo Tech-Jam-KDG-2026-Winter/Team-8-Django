@@ -2,16 +2,23 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from django.utils.http import url_has_allowed_host_and_scheme
+
 from .forms import SignUpForm
 from .models import Profile
 
 
-def signup_view(request): 
+def signup_view(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
+
+            next_url = request.GET.get("next")
+            if next_url and url_has_allowed_host_and_scheme(next_url, allowed_hosts={request.get_host()}):
+                return redirect(next_url)
+
             return redirect("accounts:profile")
     else:
         form = SignUpForm()
@@ -24,6 +31,11 @@ def login_view(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
+
+            next_url = request.GET.get("next")
+            if next_url and url_has_allowed_host_and_scheme(next_url, allowed_hosts={request.get_host()}):
+                return redirect(next_url)
+
             return redirect("accounts:profile")
     else:
         form = AuthenticationForm()
@@ -52,5 +64,4 @@ def profile_view(request):
         "user_weight": profile.weight_kg,
         "user_gender": profile.get_gender_display() if profile.gender else "未回答",
     }
-    # いま templates/accounts/mypage.html があるので、そっちを表示するのが自然
     return render(request, "accounts/mypage.html", context)

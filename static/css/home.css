@@ -26,8 +26,14 @@
   background-color: var(--bg5);
   padding: 1.2rem;
   border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+}
+
+.home-container-2-spacer{
+  flex: 1 1 30%;
+  min-height: 1px;
 }
 
 .home-container-1 h2{
@@ -64,7 +70,14 @@
   aspect-ratio: 9 / 11;
   background-color: var(--bg6);
   border-radius: 0.6rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-post:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .user-post img{
@@ -79,17 +92,22 @@
 }
 
 .home-container-2{
-  flex: 0 0 30%;
+  width: 30%;
+  max-width: 400px;
   background-color: var(--bg4);
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  position: fixed;
+  right: 4%;
+  bottom: 10%;
 }
 
 .score-1{
   padding: 1rem;
   background-color: #FFE6B4;
   border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .score-1 small{
@@ -101,9 +119,6 @@
   color: var(--tx3);
 }
 
-.score-txt{
-  color: #B8DEE9;
-}
 
 .menu-item{
   margin: 2rem 0 1rem 0;
@@ -125,15 +140,4 @@
 }
 
 
-.bottom-1{
-  position: fixed;
-  right: 5%;
-  bottom: 12%;
-}
 
-.bottom-1 button{
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  background-color: var(--bg2);
-}

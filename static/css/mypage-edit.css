@@ -1,0 +1,150 @@
+:root{
+  --bg: #FFFFFF;
+  --bg2: #FFDA91;
+  --bg3: #A7CDD8;
+  --bg4: #F7C665;
+  --bg5: #F1EADC;
+  --bg6: #F1F1F1;
+  --tx: #8C3737;
+  --tx2: #38787E;
+  --tx3: #85ABB6;
+}
+
+main{
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-section{
+  padding: 5rem 10rem;
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 20px;
+  background-color: var(--bg5);
+}
+
+.edit-section h2{
+  margin-bottom: 2rem;
+}
+
+.edit-all{
+  display: flex;
+  gap: 7rem;
+}
+
+.edit-container1{
+  position: relative;
+  padding: 2rem;
+  height: 7rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--tx3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg6);
+  scale: 0.7;
+}
+
+.edit-container1 .profile-preview{
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.edit-container1 .file-input-label{
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--tx2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.edit-container1 .file-input-label:hover{
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.edit-container1 .file-input{
+  display: none;
+}
+
+
+.user-item{
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  gap: 0.5rem;
+}
+
+.user-item label{
+  font-size: 1.1rem;
+}
+
+.box{
+  width: 60vh;
+  height: 2rem;
+  border-radius: 20px;
+  border:none;
+  outline: none;
+  background-color: var(--bg6);
+}
+
+.box::-webkit-inner-spin-button,
+.box::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
+}
+
+input::placeholder {
+  padding-left: 1rem;
+}
+
+
+.edit-section a{
+  text-decoration: none;
+}
+
+.save-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+button{
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--bg3);
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--tx2);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover{
+  background-color: #8FC4D4;
+}

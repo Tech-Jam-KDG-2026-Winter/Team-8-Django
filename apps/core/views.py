@@ -109,6 +109,19 @@ def dashboard_view(request):
     # 4. スコア計算
     score, advice_list = daily_log.calculate_score()
 
+    current_hour = datetime.datetime.now().hour
+    if 4 <= current_hour < 11:
+        current_category = 'morning'
+    elif 11 <= current_hour < 17:
+        current_category = 'lunch'
+    else:
+        current_category = 'dinner'
+
+    recipes = Recipe.objects.filter(category=current_category).order_by('?')[:3]
+
+    if not recipes:
+        recipes = Recipe.objects.all().order_by('?')[:3]
+
     target_score = 80
     if hasattr(user, 'health_profile'):
         target_score = user.health_profile.target_score
@@ -121,6 +134,7 @@ def dashboard_view(request):
         'points_to_target': points_to_target,
         'advice_list': advice_list,
         'daily_log': daily_log, 
+        'recipes': recipes,
     }
 
-    return render(request, 'core/index.html', context)
+    return render(request, 'core/home.html', context)

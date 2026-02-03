@@ -6,18 +6,25 @@
 <link rel="stylesheet" href="{% static 'css/info.css' %}">
 {% endblock %}
 
+
+
+
 {% block content %}
 
-  <div class="info-section">
-    <div class="info-logo">
-      <img src="static/images/logo.svg" alt="logo">
-    </div>
-    <div class="login-button">
-      <button type="submit"><a href="login.html">ログイン</a></button>
-    </div>
-    <div class="signup-button">
-      <button type="submit"><a href="signin.html">新規登録</a></button>
-    </div>
+<div class="info-section">
+  <div class="info-logo">
+    <img src="{% static 'images/logo.svg' %}" alt="logo">
   </div>
+  <div class="login-button">
+    <a href="{% url 'accounts:login' %}">
+      <button type="button">ログイン</button>
+    </a>
+  </div>
+  <div class="signup-button">
+    <a href="{% url 'accounts:signup' %}">
+      <button type="button">新規登録</button>
+    </a>
+  </div>
+</div>
 
-  {% endblock %}
+{% endblock %}

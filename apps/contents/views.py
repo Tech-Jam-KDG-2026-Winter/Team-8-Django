@@ -1,27 +1,32 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import MenuPost # モデル名を MenuPost に合わせる
+from .models import MenuPost
 
+# 投稿一覧画面
+def index_view(request):
+    posts = MenuPost.objects.all() 
+    return render(request, 'contents/post.html', {'posts': posts})
+
+# 投稿詳細画面 (ここが urls.py から呼ばれる detail_view です)
+def detail_view(request, pk):
+    post = get_object_or_404(MenuPost, pk=pk)
+    return render(request, 'contents/post-detail.html', {'post': post})
+
+# 新規投稿画面
 @login_required
 def create_view(request):
-    # apps/contents/views.py の create_view 関数内
     if request.method == 'POST':
-    # .create() の戻り値を post という変数で受け取る
+        # フォームから送られてきたデータを保存
         post = MenuPost.objects.create(
             user=request.user,
             title=request.POST.get('name'),    
+            ingredients=request.POST.get('ingredients'),
+            ingredients_num=request.POST.get('ingredients_num'),
             recipe=request.POST.get('recipe'), 
             image=request.FILES.get('image'),  
         )
-        # 保存した投稿のID(pk)を使って、詳細画面(detail)へリダイレクト！
+        # 保存したら詳細画面へリダイレクト
         return redirect('contents:detail', pk=post.pk)
 
-    # 投稿画面を表示
-    return render(request, 'contents/post-betail.html') 
-
-# apps/contents/views.py に追記
-def index_view(request):
-    # すべての投稿を、新しい順（-created_at）に取得
-    posts = MenuPost.objects.all().order_by('-created_at')
-    # index.html に 'posts' という名前でデータを渡す
-    return render(request, 'contents/index.html', {'posts': posts})
+    # 投稿用ページを表示（ファイル名はプロジェクトに合わせて post.html などに修正してください）
+    return render(request, 'contents/post.html')

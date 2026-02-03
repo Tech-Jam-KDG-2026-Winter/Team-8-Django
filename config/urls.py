@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include('apps.core.urls')), 
+    path('contents/', include('apps.contents.urls')),
 ]
 
 #画像表示用設定

@@ -1,0 +1,90 @@
+:root{
+  --bg: #FFFFFF;
+  --bg2: #FFDA91;
+  --bg3: #A7CDD8;
+  --bg4: #F7C665;
+  --bg5: #F1EADC;
+  --tx: #8C3737;
+  --tx2: #38787E;
+  --tx3: #85ABB6;
+}
+
+
+*{
+  overflow: hidden;
+}
+
+label{
+  color: black;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+input{
+  margin: 0.5rem;
+  width: 80vh;
+  height: 5vh;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  border-style: hidden;
+}
+
+
+
+.login-section{
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: var(--bg5);
+  border-radius: 10px;
+  box-shadow: 1px 2px 10px rgb(175, 171, 171);
+  gap: 1.5rem;
+}
+
+.login-logo img{
+  width: 10rem;
+  height: auto;
+}
+
+.user-input{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.login-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-button button{
+  margin-top: 1.5rem;
+  width: 12rem;
+  height: 3rem;
+  border-radius: 20px;
+  border-style: hidden;
+  background-color: var(--tx3);
+  font-size: 1rem;
+  color: var(--bg);
+}
+
+.signup-link {
+  margin-left: 3rem;
+  align-self: flex-start;
+}
+
+.signup-link a {
+  text-decoration: none;
+  color: orange;
+  font-size: 1.1rem;
+  font-weight: bold;
+}

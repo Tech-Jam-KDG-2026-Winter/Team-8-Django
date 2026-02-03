@@ -16,17 +16,17 @@
   <header>
     <div class="user-1">
       <div class="score-txt">今日のスコア</div>
-      <div class="score-img"><img src="static/images/homescore.png" alt=""><!--{{ graph }}--></div>
+      <div class="score-img"><img src="{% static 'images/detail.svg' %}" alt=""><!--{{ graph }}--></div>
     </div>
 
     <div class="user-2">
       <div class="header-main-1">
-        <a href="{% url 'dashboard' %}"><img src="{% static 'images/logo.svg' %}" alt="app-loogo"></a>
+        <a href="{% url 'core:dashboard' %}"><img src="{% static 'images/logo.svg' %}" alt="app-loogo"></a>
         <p>頑張らなくても、毎日の食事だけで健康に。</p>
       </div>
       <div class="header-main-2">
         <!-- {% if use.is_authenticated %} -->
-        <a href="mypage.html"><img src="static/images/account.svg" alt="icon"></a>
+        <a href="{% url 'core:dashboard' %}"><img src="{% static 'images/account.svg' %}" alt="icon"></a>
         <!-- {% else %} -->
         <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
         <!-- {% endif %} -->
@@ -34,26 +34,22 @@
     </div>
   </header>
 
-  <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
   {% block content %}
-
-
   {% endblock %}
-  <!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 -->
 
   <footer>
     <div class="bottom-2">
       <nav>
-        <a class="homelink" href="{% url 'dashboard' %}">
+        <a class="homelink" href="{% url 'core:dashboard' %}">
           <img src="{% static 'images/home.svg' %}" alt="ホームアイコン" width="24" height="24">ホーム
         </a>
-        <a class="detaillink" href="{% url 'detail' pk=1 %}">
+        <a class="detaillink" href="{% url 'core:detail' pk=1 %}">
           <img src="{% static 'images/detail.svg' %}" alt="メモアイコン" width="24" height="24">献立詳細
         </a>
-        <a class="mypagelink" href="{% url 'profile' %}">
+        <a class="mypagelink" href="{% url 'accounts:profile' %}">
           <img src="{% static 'images/mypage.svg' %}" alt="マイページアイコン" width="24" height="24">マイページ
         </a>
-        <a class="postlink" href="{% url 'create' %}">
+        <a class="postlink" href="{% url 'contents:create' %}">
           <img src="{% static 'images/post.svg' %}" alt="投稿アイコン" width="24" height="24">投稿
         </a>
       </nav>

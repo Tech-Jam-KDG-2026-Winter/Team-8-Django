@@ -104,7 +104,7 @@ def dashboard_view(request):
         daily_log.save()
         
         # 「再読み込み」して二重送信を防ぐ（PRGパターン）
-        return redirect('dashboard')
+        return redirect('core:dashboard')
 
     # 4. スコア計算
     score, advice_list = daily_log.calculate_score()

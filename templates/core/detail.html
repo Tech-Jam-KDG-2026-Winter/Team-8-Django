@@ -16,59 +16,68 @@
 
 
 <body>
-  <header>
-    <div class="top">
+<header>
+    <div class="user-1">
+        <div class="score-txt">今日のスコア</div>
+        <div class="score-img"><img src="static/images/homescore.png" alt=""><!--{{ graph }}--></div>
+    </div>
 
-      <div class="user-1">
-        <h1><a href="#"><img src="static/images/logo.svg" alt="app-loogo" width="160" height="50"></a></h1>
+    <div class="user-2">
+      <div class="header-main-1">
+        <a href="#"><img src="static/images/logo.svg" alt="app-loogo"></a>
         <p>頑張らなくても、毎日の食事だけで健康に。</p>
       </div>
-
-      <div class="user">
-        <div class="icon-img">
-          <!-- {% if use.is_authenticated %} -->
-          <a href="mypage.html"><img src="static/images/account.svg" alt="icon" width="60"
-              height="60"></a><!-- {% user_icon %} -->
-          <!-- {% else %} -->
-          <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
-          <!-- {% endif %} -->
-        </div>
+      <div class="header-main-2">
+        <!-- {% if use.is_authenticated %} -->
+        <a href="mypage.html"><img src="static/images/account.svg" alt="icon"></a><!-- {% user_icon %} -->
+        <!-- {% else %} -->
+        <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
+        <!-- {% endif %} -->
       </div>
-
     </div>
-  </header>
+</header>
 
   <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
   <!-- {% block content %} -->
   <main>
     <div class="detail-main">
 
+
       <div class="cook-container-1">
-        {% if recipe.image %}
-          <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
-        {% else %}
-          <img src="{% static 'images/giraffe.png' %}" alt="cooking-image">
-        {% endif %}
+        <img src="static/images/giraffe.png" alt="cooking-image">
       </div>
 
       <div class="cook-container-2">
         <div class="cook-item">
           <div class="cooking-name">
-            <h2>{{ recipe.title }}</h2>
+            <h2>料理名{{ name_detail }}</h2>
           </div>
-
           <div class="material">
             <h2>材料</h2>
-            <div class="text-content">
-              {{ recipe.ingredients|linebreaksbr }}
-            </div>
+            <ul>
+              <!--  {% for item in materials %}  -->
+              <li>・{{ material }} / {{ material_num }}</li>
+              <li>・{{ material }} / {{ material_num }}</li>
+              <li>・{{ material }} / {{ material_num }}</li>
+              <li>・{{ material }} / {{ material_num }}</li>
+              <li>・{{ material }} / {{ material_num }}</li>
+              <!--  {% endfor %}  -->
+            </ul>
           </div>
-
           <div class="recipe">
             <h2>レシピ</h2>
-            <div class="text-content">
-              {{ recipe.steps|linebreaksbr }}
-            </div>
+            <ul>
+              <!--  {% for item in recipes %}  -->
+              <li>１　{{ recipe }}</li>
+              <li>２　{{ recipe }}</li>
+              <li>３　{{ recipe }}</li>
+              <li>４　{{ recipe }}</li>
+              <li>５　{{ recipe }}</li>
+              <li>６　{{ recipe }}</li>
+              <li>７　{{ recipe }}</li>
+              <li>８　{{ recipe }}</li>
+              <!--  {% endfor %}  -->
+            </ul>
           </div>
         </div>
       </div>
@@ -80,12 +89,6 @@
 
   <!-- {% endblock %} -->
   <!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 -->
-
-  <div class="bottom-1">
-    <button type="submit">
-      投稿！
-    </button>
-  </div>
 
   <footer>
     <div class="bottom-2">

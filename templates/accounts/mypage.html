@@ -1,0 +1,136 @@
+<!--  -->
+
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tec-jam(team8)</title>
+  <!-- {% load static %} -->
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/mypage.css"><!-- {% static 'css/style.css' %} -->
+  <!-- {% block extra_css %}{% endblock %} -->
+</head>
+
+
+<body>
+  <header>
+    <div class="user-1">
+      <div class="score-txt">今日のスコア</div>
+      <div class="score-img"><img src="static/images/homescore.png" alt=""><!--{{ graph }}--></div>
+    </div>
+
+    <div class="user-2">
+      <div class="header-main-1">
+        <a href="#"><img src="static/images/logo.svg" alt="app-loogo"></a>
+        <p>頑張らなくても、毎日の食事だけで健康に。</p>
+      </div>
+      <div class="header-main-2">
+        <!-- {% if use.is_authenticated %} -->
+        <a href="mypage.html"><img src="static/images/account.svg" alt="icon"></a><!-- {% user_icon %} -->
+        <!-- {% else %} -->
+        <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
+        <!-- {% endif %} -->
+      </div>
+    </div>
+  </header>
+
+  <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
+  <!-- {% block content %} -->
+  <main>
+    <div class="mypage-main">
+      <div class="mypage-container-1">
+        <h2>保存した料理</h2>
+        <div class="keep-all-post">
+          <div class="keep-post">
+            <h3># keepuserpost</h3>
+            <!-- 投稿ページの追加 -->
+          </div>
+          <div class="keep-post">
+            <h3># keepuserpost</h3>
+            <!-- 投稿ページの追加 -->
+          </div>
+          <div class="keep-post">
+            <h3># keepuserpost</h3>
+            <!-- 投稿ページの追加 -->
+          </div>
+          <div class="keep-post">
+            <h3># keepuserpost</h3>
+            <!-- 投稿ページの追加 -->
+          </div>
+          <div class="keep-post">
+            <h3># keepuserpost</h3>
+            <!-- 投稿ページの追加 -->
+          </div>
+          <div class="keep-post">
+            <h3># keepuserpost</h3>
+            <!-- 投稿ページの追加 -->
+          </div>
+          <div class="keep-post">
+            <h3># keepuserpost</h3>
+            <!-- 投稿ページの追加 -->
+          </div>
+          <div class="keep-post">
+            <h3># keepuserpost</h3>
+            <!-- 投稿ページの追加 -->
+          </div>
+        </div>
+      </div>
+
+
+      <div class="mypage-container-2">
+        <div class="edit-btn">
+          <div class="profile-edit">
+            <img src="static/images/edit.svg" alt="編集アイコン" width="24" height="24">
+            <a href="mypage-edit.html">
+              <p>編集する</p>
+            </a>
+          </div>
+        </div>
+        <div class="user-name">
+          <h2>名前{{ registration_user_name }}</h2>
+        </div>
+
+        <div class="profile">
+          <h3>プロフィール</h3>
+          <div class="profile-detail">
+            <p>年齢　{{ user_age }}</p>
+            <p>身長　{{ user_height }}</p>
+            <p>体重　{{ user_weight }}</p>
+            <p>性別　{{ user_gender }}</p>
+          </div>
+        </div>
+        <div class="score">
+          <h3>スコア</h3>
+          <div class="score-graph">
+            {{ month_score_graph }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- {% endblock %} -->
+  <!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 -->
+
+  <footer>
+    <div class="bottom-2">
+      <nav>
+        <a class="homelink" href="home.html"><img src="static/images/home.svg" alt="ホームアイコン" width="24"
+            height="24">ホーム</a><!-- {% static 'icons/home.svg' %} -->
+        <a class="detaillink" href="detail.html"><img src="static/images/detail.svg" alt="メモアイコン" width="24"
+            height="24">献立詳細</a><!-- {% static 'icons/detail.svg' %} -->
+        <a class="mypagelink" href="mypage.html"><img src="static/images/mypage.svg" alt="マイページアイコン" width="24"
+            height="24">マイページ</a><!-- {% static 'icons/mypage.svg' %} -->
+        <a class="postlink" href="post.html"><img src="static/images/post.svg" alt="投稿アイコン" width="24"
+            height="24">投稿</a><!-- {% static 'icons/post.svg' %} -->
+      </nav>
+    </div>
+  </footer>
+</body>
+
+
+</html>

@@ -12,31 +12,31 @@
   <link rel="stylesheet" href="static/css/style.css">
   <link rel="stylesheet" href="static/css/post.css"><!-- {% static 'css/style.css' %} -->
   <!-- {% block extra_css %}{% endblock %} -->
+  <script src="static/js/main.js" defer></script>
 </head>
 
 
 <body>
-  <header>
-    <div class="top">
+<header>
+    <div class="user-1">
+        <div class="score-txt">今日のスコア</div>
+        <div class="score-img"><img src="static/images/homescore.png" alt=""><!--{{ graph }}--></div>
+    </div>
 
-      <div class="user-1">
-        <h1><a href="#"><img src="static/images/logo.svg" alt="app-loogo" width="160" height="50"></a></h1>
+    <div class="user-2">
+      <div class="header-main-1">
+        <a href="#"><img src="static/images/logo.svg" alt="app-loogo"></a>
         <p>頑張らなくても、毎日の食事だけで健康に。</p>
       </div>
-
-      <div class="user">
-        <div class="icon-img">
-          <!-- {% if use.is_authenticated %} -->
-          <a href="mypage.html"><img src="static/images/account.svg" alt="icon" width="60"
-              height="60"></a><!-- {% user_icon %} -->
-          <!-- {% else %} -->
-          <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
-          <!-- {% endif %} -->
-        </div>
+      <div class="header-main-2">
+        <!-- {% if use.is_authenticated %} -->
+        <a href="mypage.html"><img src="static/images/account.svg" alt="icon"></a><!-- {% user_icon %} -->
+        <!-- {% else %} -->
+        <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
+        <!-- {% endif %} -->
       </div>
-
     </div>
-  </header>
+</header>
 
   <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
   <!-- {% block content %} -->
@@ -45,39 +45,36 @@
     <div class="post-title">
       <h2>投稿</h2>
     </div>
-  
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %} <div class="post-item">
+    <form method="POST">
+      <!-- {% csrf_token %} -->
+      <!-- {% for error in form.errors.values %} -->
+      <!-- {{ error }} -->
+      <!-- {% endfor %} -->
+      <div class="post-item">
         <div class="user-input">
-          <label>料理名</label>
-          <input type="text" name="name" placeholder="料理名を入力してください" required>
+          <div class="image-preview-container" id="imagePreviewContainer">
+            <img id="imagePreview" src="" alt="プレビュー">
+            <div class="placeholder-text">画像を選択してください</div>
+          </div>
+          <label for="imageInput" class="file-select-label">画像を選択</label>
+          <input type="file" id="imageInput" name="image" accept="image/*">
         </div>
-  
         <div class="user-input">
-          <label>写真</label>
-          <input type="file" name="image" accept="image/*">
-        </div>
-  
-        <div class="user-input">
-          <label>作り方・材料など</label>
-          <textarea name="recipe" rows="10" placeholder="自由に内容を入力してください"></textarea>
+          <div class="text-preview-container">
+          <input type="text" name="text" placeholder="文字を入力してください">
+          </div>
         </div>
       </div>
-  
+
       <div class="post-button">
-        <button type="submit">投稿する！</button>
+        <button type="submit"><a href="home.html">投稿する！</a></button>
       </div>
+
     </form>
   </div>
 
   <!-- {% endblock %} -->
   <!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 -->
-
-  <div class="bottom-1">
-    <button type="submit">
-      投稿！
-    </button>
-  </div>
 
   <footer>
     <div class="bottom-2">

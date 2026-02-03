@@ -16,61 +16,59 @@
 
 
 <body>
-  <header>
-    <div class="top">
+<header>
+    <div class="user-1">
+        <div class="score-txt">今日のスコア</div>
+        <div class="score-img"><img src="static/images/homescore.png" alt=""><!--{{ graph }}--></div>
+    </div>
 
-      <div class="user-1">
-        <h1><a href="#"><img src="static/images/logo.svg" alt="app-loogo" width="160" height="50"></a></h1>
+    <div class="user-2">
+      <div class="header-main-1">
+        <a href="#"><img src="static/images/logo.svg" alt="app-loogo"></a>
         <p>頑張らなくても、毎日の食事だけで健康に。</p>
       </div>
-
-      <div class="user">
-        <div class="icon-img">
-          <!-- {% if use.is_authenticated %} -->
-          <a href="mypage.html"><img src="static/images/account.svg" alt="icon" width="60"
-              height="60"></a><!-- {% user_icon %} -->
-          <!-- {% else %} -->
-          <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
-          <!-- {% endif %} -->
-        </div>
+      <div class="header-main-2">
+        <!-- {% if use.is_authenticated %} -->
+        <a href="mypage.html"><img src="static/images/account.svg" alt="icon"></a><!-- {% user_icon %} -->
+        <!-- {% else %} -->
+        <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
+        <!-- {% endif %} -->
       </div>
-
     </div>
-  </header>
+</header>
 
   <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
   <!-- {% block content %} -->
-
   <main>
     <div class="post-detail-main">
+
+
       <div class="post-detail-container-1">
-        {% if post.image %}
-          <img src="{{ post.image.url }}" alt="{{ post.title }}">
-        {% else %}
-          <img src="{% static 'images/giraffe.png' %}" alt="no-image">
-        {% endif %}
+        <img src="static/images/giraffe.png" alt="cooking-image">
       </div>
 
       <div class="post-detail-container-2">
         <div class="post-detail-item">
           <div class="user-name">
-            <h2>料理名：{{ post.title }}</h2>
+            <h2>@user_name{{ user_name }}</h2>
           </div>
           <div class="post-detail-all">
-            <div style="white-space: pre-wrap;">{{ post.recipe|linebreaksbr }}</div>
+            {{ post_detail_all }}
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
+            <br>-- text -- text -- text -- text -- text -- text
           </div>
         </div>
       </div>
     </div>
+
   </main>
+
   <!-- {% endblock %} -->
   <!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 --><!-- ここまで各ページの中身 -->
-
-      <div class="bottom-1">
-      <button type="submit">
-        投稿！
-      </button>
-    </div>
     
   <footer>
     <div class="bottom-2">

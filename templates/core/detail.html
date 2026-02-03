@@ -42,49 +42,38 @@
   <main>
     <div class="detail-main">
 
-
       <div class="cook-container-1">
-        <img src="static/images/giraffe.png" alt="cooking-image">
+        {% if recipe.image %}
+          <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+        {% else %}
+          <img src="{% static 'images/giraffe.png' %}" alt="No Image">
+        {% endif %}
       </div>
-
       <div class="cook-container-2">
         <div class="cook-item">
+          
           <div class="cooking-name">
-            <h2>料理名{{ name_detail }}</h2>
+            <h2>{{ recipe.title }}</h2>
           </div>
+
           <div class="material">
             <h2>材料</h2>
-            <ul>
-              <!--  {% for item in materials %}  -->
-              <li>・{{ material }} / {{ material_num }}</li>
-              <li>・{{ material }} / {{ material_num }}</li>
-              <li>・{{ material }} / {{ material_num }}</li>
-              <li>・{{ material }} / {{ material_num }}</li>
-              <li>・{{ material }} / {{ material_num }}</li>
-              <!--  {% endfor %}  -->
-            </ul>
+            <div class="text-content">
+              {{ recipe.ingredients|linebreaksbr }}
+            </div>
           </div>
+
           <div class="recipe">
             <h2>レシピ</h2>
-            <ul>
-              <!--  {% for item in recipes %}  -->
-              <li>１　{{ recipe }}</li>
-              <li>２　{{ recipe }}</li>
-              <li>３　{{ recipe }}</li>
-              <li>４　{{ recipe }}</li>
-              <li>５　{{ recipe }}</li>
-              <li>６　{{ recipe }}</li>
-              <li>７　{{ recipe }}</li>
-              <li>８　{{ recipe }}</li>
-              <!--  {% endfor %}  -->
-            </ul>
+            <div class="text-content">
+              {{ recipe.steps|linebreaksbr }}
+            </div>
           </div>
-        </div>
+          </div>
       </div>
     </div>
 
   </main>
-
 
 
   <!-- {% endblock %} -->

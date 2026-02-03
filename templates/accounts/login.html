@@ -1,68 +1,36 @@
+{% extends "base.html" %}
 {% load static %}
-{% static 'css/style.css' %}
-{% block extra_css %}{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tec-jam(team8)</title>
-  <!-- {% load static %} -->
-  <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="static/css/login.css"><!-- {% static 'css/style.css' %} -->
-  <!-- {% block extra_css %}{% endblock %} -->
-</head>
-
-
-<body>
-  <header>
-    <div class="user-1">
-      <div class="score-txt">今日のスコア</div>
-      <div class="score-img"><img src="static/images/homescore.png" alt=""><!--{{ graph }}--></div>
-    </div>
-
-    <div class="user-2">
-      <div class="header-main-1">
-        <a href="#"><img src="static/images/logo.svg" alt="app-loogo"></a>
-        <p>頑張らなくても、毎日の食事だけで健康に。</p>
-      </div>
-      <div class="header-main-2">
-        <!-- {% if use.is_authenticated %} -->
-        <a href="mypage.html"><img src="static/images/account.svg" alt="icon"></a>
-        <!-- {% else %} -->
-        <!-- <a href="mypage.html"><img src="static/images/profile.svg" alt="icon" width="24" height="24"></a> -->
-        <!-- {% endif %} -->
-      </div>
-    </div>
-  </header>
-
-  <!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 --><!-- ここから各ページの中身 -->
-  <!-- {% block content %} -->
-
-  <div class="login-section">
-    <div class="login-logo">
-      <img src="static/images/logo.svg" alt="logo">
-    </div>
-    <form method="POST">
-      {% csrf_token %}
-      <!-- {% for error in form.errors.values %} -->
-      <!-- {{ error }} -->
-      <!-- {% endfor %} -->
-      <div class="user-input">
-        <label>ユーザー名</label>
-        <input type="text" name="username">
-      </div>
-      <div class="user-input">
-        <label>パスワード</label>
-        <input type="password" name="password">
-      </div>
-      <div class="login-button">
-        <button type="submit">ログイン</button>
-      </div>
-    </form>
-    <div class="signup-link">
-      <a href="% url 'accounts:signup' %}">新規登録はこちらから</a>
-    </div>
+{% block content %}
+<div class="login-section">
+  <div class="login-logo">
+    <img src="{% static 'images/logo.svg' %}" alt="logo">
   </div>
 
-  {% endblock %}
+  <form method="POST">
+    {% csrf_token %}
+    <div class="user-input">
+      <label>ユーザー名</label>
+      <input type="text" name="username">
+    </div>
+
+    <div class="user-input">
+      <label>パスワード</label>
+      <input type="password" name="password">
+    </div>
+
+    <div class="login-button">
+      <button type="submit">ログイン</button>
+    </div>
+  </form>
+
+  <div class="signup-link">
+    <a href="{% url 'accounts:signup' %}">新規登録はこちらから</a>
+  </div>
+</div>
+{% endblock %}

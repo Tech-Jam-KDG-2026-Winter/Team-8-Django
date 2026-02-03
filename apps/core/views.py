@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect  # redirectを追加
+from django.shortcuts import render, redirect ,get_object_or_404 # redirectを追加
 from django.contrib.auth.decorators import login_required
 from .models import Recipe
 from .models import HealthProfile, DailyHealthLog
@@ -138,3 +138,17 @@ def dashboard_view(request):
     }
 
     return render(request, 'core/home.html', context)
+
+
+@login_required
+def detail_view(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk)
+
+    materials = [line.strip() for line in (recipe.ingredients or "").splitlines() if line.strip()]
+    steps = [line.strip() for line in (recipe.steps or "").splitlines() if line.strip()]
+
+    return render(request, "core/detail.html", {
+        "recipe": recipe,
+        "materials": materials,
+        "steps": steps,
+    })

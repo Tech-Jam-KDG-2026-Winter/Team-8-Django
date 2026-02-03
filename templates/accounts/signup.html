@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}新規登録{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="signin-section">
+    <div class="signin-logo">
+        <img src="{% static 'images/logo.svg' %}" alt="logo">
+    </div>
+
+    <form method="POST" novalidate>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div class="form-errors">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <div class="user-input">
+            <label>ユーザー名</label>
+            <input type="text" name="username" value="{{ form.username.value|default_if_none:'' }}" required>
+            {{ form.username.errors }}
+        </div>
+
+        <div class="user-input">
+            <label>パスワード</label>
+            <input type="password" name="password1" required>
+            {{ form.password1.errors }}
+        </div>
+
+        <div class="user-input">
+            <label>確認用パスワード</label>
+            <input type="password" name="password2" required>
+            {{ form.password2.errors }}
+        </div>
+
+        <div class="signin-button">
+            <button type="submit">登録する</button>
+        </div>
+    </form>
+
+    <div class="login-link">
+        <a href="{% url 'accounts:login' %}">ログインはこちら</a>
+    </div>
+</div>
+{% endblock %}

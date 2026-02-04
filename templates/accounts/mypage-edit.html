@@ -1,65 +1,79 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}マイページ編集{% endblock %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link rel="stylesheet" href="{% static 'css/mypage-edit.css' %}">
+<link rel="stylesheet" href="{% static 'css/mypage.css' %}">
 {% endblock %}
 
 {% block content %}
-  <main>
-    <form method="POST">
-      <div class="edit-section">
-          <h2>プロフィール編集</h2>
-        <div class="edit-all">
+<main>
+  <div class="mypage-main">
 
-          <div class="edit-container1">
-            <!-- ユーザーがアイコンを設定している場合は user.icon、そうでなければデフォルトアイコン -->
-            <img src="{% if user.icon %}{{ user.icon.url }}{% else %}static/images/icon.svg{% endif %}" alt="プロフィール画像" class="profile-preview" id="profilePreview">
-            <label for="profileImageInput" class="file-input-label">
-              ファイルを選択
-            </label>
-            <input type="file" id="profileImageInput" name="profile_image" accept="image/*" class="file-input">
-          </div>
+    <!-- 左側（mypageと同じ「保存した料理」枠を置いて揃える） -->
+    <div class="mypage-container-1">
+      <h2>プロフィール編集</h2>
+      <p style="margin: 8px 0 16px;">基本情報を更新できます。</p>
 
+      <form method="post" action="{% url 'accounts:mypage_edit' %}">
+        {% csrf_token %}
 
-          <div class="edit-container2">
-            <div class="user-item">
-              <label for="name">
-                ユーザー名
-              </label>
-              <input class="box" type="text" name="name" maxlength="20" placeholder="山田　太郎">
-            </div>
-            <div class="user-item">
-              <label for="height">
-                身長
-              </label>
-              <input class="box" type="number" inputmode="numeric" name="height" min="100" max="250" placeholder="160">
-            </div>
-            <div class="user-item">
-              <label for="weight">
-                体重
-              </label>
-              <input class="box" type="number" inputmode="numeric" name="weight" min="20" max="200" placeholder="63">
-            </div>
-            <div class="user-item">
-              <label>性別</label>
-              <label><input type="radio" name="gender" value="male"> 男性</label>
-              <label><input type="radio" name="gender" value="female"> 女性</label>
-              <label><input type="radio" name="gender" value="other"> その他</label>
-            </div>
-            <div class="user-item">
-              <label>
-                目標スコア
-              </label>
-              <input class="box" type="number" inputmode="numeric" min="10" max="100" placeholder="80">
-            </div>
+        <div class="profile">
+          <h3>入力</h3>
+
+          <div class="profile-detail">
+            <p>名前</p>
+            <input type="text" name="name" value="{{ profile.name|default_if_none:'' }}"
+              style="width:100%; padding:8px;">
+
+            <p style="margin-top:12px;">年齢</p>
+            <input type="number" name="age" value="{{ profile.age|default_if_none:'' }}"
+              style="width:100%; padding:8px;">
+
+            <p style="margin-top:12px;">身長(cm)</p>
+            <input type="number" step="0.1" name="height_cm" value="{{ profile.height_cm|default_if_none:'' }}"
+              style="width:100%; padding:8px;">
+
+            <p style="margin-top:12px;">体重(kg)</p>
+            <input type="number" step="0.1" name="weight_kg" value="{{ profile.weight_kg|default_if_none:'' }}"
+              style="width:100%; padding:8px;">
           </div>
         </div>
-        <div class="save-btn">
-        <a href="mypage.html"><button type="submit"><img src="static/images/save.svg" alt="保存アイコン" width="24" height="24">保存する</button></a>
+
+        <div style="margin-top: 16px; display:flex; gap:12px;">
+          <button type="submit" class="reload" style="border:0; cursor:pointer;">保存</button>
+
+          <a href="{% url 'accounts:profile' %}" class="reload" style="text-decoration:none;">キャンセル</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- 右側（mypageと同じ枠） -->
+    <div class="mypage-container-2">
+      <div class="edit-btn">
+        <div class="profile-edit">
+          <img src="{% static 'images/edit.svg' %}" alt="編集アイコン" width="24" height="24">
+          <p>編集ページ</p>
         </div>
       </div>
-    </form>
-  </main>
-  {% endblock %}
+
+      <div class="user-name">
+        <h2>現在の情報</h2>
+      </div>
+
+      <div class="profile">
+        <h3>プロフィール</h3>
+        <div class="profile-detail">
+          <p>名前　{{ profile.name }}</p>
+          <p>年齢　{{ profile.age }}</p>
+          <p>身長　{{ profile.height_cm }}</p>
+          <p>体重　{{ profile.weight_kg }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+{% endblock %}

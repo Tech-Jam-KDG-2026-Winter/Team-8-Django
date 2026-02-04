@@ -74,10 +74,12 @@ def mypage_edit_view(request):
     )
 
     if request.method == "POST":
-        profile.name = request.POST.get("name", "")
+        profile.name = request.POST.get("name", "").strip()
         profile.age = request.POST.get("age") or None
         profile.height_cm = request.POST.get("height_cm") or None
         profile.weight_kg = request.POST.get("weight_kg") or None
+        gender = request.POST.get("gender") or None
+        profile.gender = gender
         profile.save()
         return redirect("accounts:profile")
 

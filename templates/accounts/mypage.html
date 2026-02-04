@@ -52,7 +52,7 @@
       <div class="edit-btn">
         <div class="profile-edit">
           <img src="{% static 'images/edit.svg' %}" alt="編集アイコン" width="24" height="24">
-          <a href="mypage-edit.html">
+          <a href="{% url 'accounts:mypage_edit' %}">
             <p>編集する</p>
           </a>
         </div>

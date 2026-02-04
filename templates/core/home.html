@@ -12,15 +12,22 @@
 
     <div class="home-container-1">
       <h2>みんなの投稿</h2>
-      <div class="all-post">
-        <div class="user-post">
-          {% for post in posts %}
-          <a href="{% url 'contents:detail' pk=post.id %}">
-            {% endfor %}
-        </div>
+
+  <div class="all-post">
+    {% for post in posts %}
+      <div class="user-post">
+        <a href="{% url 'contents:detail' post.pk %}">
+          {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+          {% else %}
+            {% load static %}
+            <img src="{% static 'images/giraffe.png' %}" alt="no image">
+          {% endif %}
+          <h4>{{ post.title }}</h4>
+        </a>
       </div>
-      <a href="{% url 'core:dashboard' %}" class="reload">更新</a>
-    </div>
+  </div>
+</div>
     <div class="home-container-2-spacer"></div>
 
 

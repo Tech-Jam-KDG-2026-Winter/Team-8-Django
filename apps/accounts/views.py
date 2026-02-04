@@ -65,3 +65,7 @@ def profile_view(request):
         "user_gender": profile.get_gender_display() if profile.gender else "未回答",
     }
     return render(request, "accounts/mypage.html", context)
+
+@login_required
+def mypage_edit_view(request):
+    return render(request, "accounts/mypage-edit.html")

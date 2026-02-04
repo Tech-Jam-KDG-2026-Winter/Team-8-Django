@@ -7,32 +7,41 @@
 {% endblock %}
 
 {% block content %}
-  <main>
-    <div class="post-detail-main">
+<main>
+  <div class="post-detail-main">
 
 
-      <div class="post-detail-container-1">
-        <img src="{% static 'images/giraffe.png' %}" alt="cooking-image">
-      </div>
-
-      <div class="post-detail-container-2">
-        <div class="post-detail-item">
-          <div class="user-name">
-            <h2>@user_name{{ user_name }}</h2>
-          </div>
-          <div class="post-detail-all">
-            {{ post_detail_all }}
-            <br>-- text -- text -- text -- text -- text -- text
-            <br>-- text -- text -- text -- text -- text -- text
-            <br>-- text -- text -- text -- text -- text -- text
-            <br>-- text -- text -- text -- text -- text -- text
-            <br>-- text -- text -- text -- text -- text -- text
-            <br>-- text -- text -- text -- text -- text -- text
-          </div>
-        </div>
-      </div>
+    <div class="post-detail-container-1">
+      <img src="{% static 'images/giraffe.png' %}" alt="cooking-image">
     </div>
 
-  </main>
+    <div class="post-detail-container-2">
+      <div class="post-detail-item">
+        <div class="user-name">
+          <h2>@user_name{{ user_name }}</h2>
+        </div>
+        <div class="post-detail-all">
+          {{ post_detail_all }}
+          <br>-- text -- text -- text -- text -- text -- text
+          <br>-- text -- text -- text -- text -- text -- text
+          <br>-- text -- text -- text -- text -- text -- text
+          <br>-- text -- text -- text -- text -- text -- text
+          <br>-- text -- text -- text -- text -- text -- text
+          <br>-- text -- text -- text -- text -- text -- text
+        </div>
+      </div>
+<div class="keep-btn">
+  <form method="post" action="{% url 'contents:detail' pk=post.id %}">
+    {% csrf_token %}
+    <button type="submit" class="keep-button">
+      <img src="{% static 'images/keep.svg' %}" alt="保存アイコン" width="24" height="24">
+      保存する
+    </button>
+  </form>
+</div>
+    </div>
+  </div>
 
-  {% endblock %}
+</main>
+
+{% endblock %}

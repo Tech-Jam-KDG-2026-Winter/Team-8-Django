@@ -68,4 +68,17 @@ def profile_view(request):
 
 @login_required
 def mypage_edit_view(request):
-    return render(request, "accounts/mypage-edit.html")
+    profile, _ = Profile.objects.get_or_create(
+        user=request.user,
+        defaults={"name": request.user.username},
+    )
+
+    if request.method == "POST":
+        profile.name = request.POST.get("name", "")
+        profile.age = request.POST.get("age") or None
+        profile.height_cm = request.POST.get("height_cm") or None
+        profile.weight_kg = request.POST.get("weight_kg") or None
+        profile.save()
+        return redirect("accounts:profile")
+
+    return render(request, "accounts/mypage-edit.html", {"profile": profile})

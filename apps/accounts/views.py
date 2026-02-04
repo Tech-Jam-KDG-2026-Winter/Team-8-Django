@@ -54,7 +54,10 @@ def logout_view(request):
 def profile_view(request):
     profile, _ = Profile.objects.get_or_create(
         user=request.user,
-        defaults={"name": request.user.username},
+        defaults={
+            "name": request.user.username,
+            "gender": "other", 
+        },
     )
 
     context = {
@@ -66,11 +69,15 @@ def profile_view(request):
     }
     return render(request, "accounts/mypage.html", context)
 
+
 @login_required
 def mypage_edit_view(request):
     profile, _ = Profile.objects.get_or_create(
         user=request.user,
-        defaults={"name": request.user.username},
+        defaults={
+            "name": request.user.username,
+            "gender": "other",  
+        },
     )
 
     if request.method == "POST":
@@ -78,8 +85,12 @@ def mypage_edit_view(request):
         profile.age = request.POST.get("age") or None
         profile.height_cm = request.POST.get("height_cm") or None
         profile.weight_kg = request.POST.get("weight_kg") or None
-        gender = request.POST.get("gender") or None
-        profile.gender = gender
+        gender = request.POST.get("gender")
+        if gender:
+            profile.gender = gender
+        else:
+            profile.gender = profile.gender or "other"
+
         profile.save()
         return redirect("accounts:profile")
 

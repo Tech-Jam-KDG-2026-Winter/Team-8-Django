@@ -14,52 +14,9 @@
       <h2>みんなの投稿</h2>
       <div class="all-post">
         <div class="user-post">
-          <a href="{% url 'contents:detail' %}">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="{% url 'contents:detail' %}">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="{% url 'contents:detail' %}">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="{% url 'contents:detail' %}">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="{% url 'contents:detail' %}">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="{% url 'contents:detail' %}">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="{% url 'contents:detail' %}">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="{% url 'contents:detail' %}">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </a>
+          {% for post in posts %}
+          <a href="{% url 'contents:detail' pk=post.id %}">
+            {% endfor %}
         </div>
       </div>
       <a href="{% url 'core:dashboard' %}" class="reload">更新</a>

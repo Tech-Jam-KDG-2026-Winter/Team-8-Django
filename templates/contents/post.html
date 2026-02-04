@@ -8,36 +8,37 @@
 
 {% block content %}
 
-  <div class="post-section">
-    <div class="post-title">
-      <h2>投稿</h2>
-    </div>
-    <form method="POST">
-      <!-- {% csrf_token %} -->
-      <!-- {% for error in form.errors.values %} -->
-      <!-- {{ error }} -->
-      <!-- {% endfor %} -->
-      <div class="post-item">
-        <div class="user-input">
-          <div class="image-preview-container" id="imagePreviewContainer">
-            <img id="imagePreview" src="" alt="プレビュー">
-            <div class="placeholder-text">画像を選択してください</div>
-          </div>
-          <label for="imageInput" class="file-select-label">画像を選択</label>
-          <input type="file" id="imageInput" name="image" accept="image/*">
-        </div>
-        <div class="user-input">
-          <div class="text-preview-container">
-          <input type="text" name="text" placeholder="文字を入力してください">
-          </div>
-        </div>
-      </div>
-
-      <div class="post-button">
-        <button type="submit"><a href="{% url 'core:dashboard' %}">投稿する！</a></button>
-      </div>
-
-    </form>
+<div class="post-section">
+  <div class="post-title">
+    <h2>投稿</h2>
   </div>
+  <form method="POST">
+    {% csrf_token %}
+    {% for error in form.errors.values %}
+    {{ error }}
+    {% endfor %}
+    <div class="post-item">
+      <div class="user-input">
+        <div class="image-preview-container" id="imagePreviewContainer">
+          <img id="imagePreview" src="" alt="プレビュー">
+          <div class="placeholder-text">画像を選択してください</div>
+        </div>
+        <label for="imageInput" class="file-select-label">画像を選択</label>
+        <input type="file" id="imageInput" name="image" accept="image/*">
+      </div>
+      <div class="user-input">
+        <div class="text-preview-container">
+          <input type="text" name="title" placeholder="タイトルを入力してください">
+          <input type="text" name="text" placeholder="文字を入力してください">
+        </div>
+      </div>
+    </div>
+
+    <div class="post-button">
+      <button type="submit">投稿する！</button>
+    </div>
+
+  </form>
+</div>
 
 {% endblock %}

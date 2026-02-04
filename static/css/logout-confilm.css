@@ -1,0 +1,121 @@
+:root{
+  --bg: #FFFFFF;
+  --bg2: #FFDA91;
+  --bg3: #A7CDD8;
+  --bg4: #F7C665;
+  --bg5: #F1EADC;
+  --tx: #8C3737;
+  --tx2: #38787E;
+  --tx3: #85ABB6;
+}
+
+*{
+  overflow-x: hidden;
+}
+
+body{
+  overflow-y: auto;
+  max-width: 100%;
+}
+
+.logout-section{
+  max-width: clamp(350px, 50vw, 420px);
+  margin: 20rem auto clamp(3rem, 6vw, 5rem) auto;
+  padding: clamp(1.5rem, 3vw, 24px);
+  background-color: var(--bg5);
+  border-radius: clamp(10px, 1.5vw, 15px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout-section h1{
+  margin: 0 0 clamp(1rem, 2vw, 16px);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  color: var(--tx);
+  text-align: center;
+}
+
+.logout-section form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.logout-section button{
+  padding: clamp(0.6rem, 1.2vw, 10px) clamp(1rem, 2vw, 16px);
+  width: clamp(10rem, 40vw, 15rem);
+  background-color: var(--tx);
+  color: var(--bg);
+  border: none;
+  border-radius: clamp(15px, 2vw, 20px);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logout-section button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logout-section p{
+  margin-top: clamp(1rem, 2vw, 16px);
+  text-align: center;
+}
+
+.logout-section a{
+  text-decoration: none;
+  color: var(--tx2);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.logout-section a:hover{
+  color: var(--tx3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* レスポンシブ */
+@media (max-width: 480px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+    margin: 20rem 0 0 0;
+    padding: 0;
+    width: 100vw;
+  }
+
+  .logout-section {
+    max-width: calc(100vw - 2rem);
+    margin: 0 1rem 3rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .logout-section h1 {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    margin-bottom: 1.2rem;
+  }
+
+  .logout-section button {
+    width: 100%;
+    max-width: 14rem;
+    padding: 0.8rem 1.2rem;
+    font-size: clamp(0.95rem, 4vw, 1.1rem);
+  }
+
+  .logout-section p {
+    margin-top: 1.2rem;
+  }
+
+  .logout-section a {
+    font-size: clamp(0.9rem, 4vw, 1.05rem);
+  }
+}

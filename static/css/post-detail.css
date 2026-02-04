@@ -107,6 +107,35 @@ body{
   line-height: 1.6;
 }
 
+.keep-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--tx3);
+  border-radius: clamp(10px, 1.5vw, 1rem);
+  width: clamp(40%, 50%, 60%);
+  height: clamp(2rem, 2vw, 1rem);
+  min-width: 150px;
+  margin: 0 auto;
+  padding: clamp(0.6rem, 1.2vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+  color: rgb(71, 71, 71);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 1rem;
+}
+
+.keep-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.keep-btn a{
+  text-decoration: none;
+}
+
 /* レスポンシブ */
 @media (max-width: 480px) {
   body {
@@ -180,5 +209,12 @@ body{
 
   .post-detail-all p {
     font-size: clamp(0.85rem, 3vw, 1rem);
+  }
+
+  .keep-btn {
+    width: 80%;
+    max-width: 200px;
+    height: 2.8rem;
+    font-size: clamp(0.9rem, 4vw, 1.05rem);
   }
 }

@@ -111,29 +111,43 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--tx3);
-  border-radius: clamp(10px, 1.5vw, 1rem);
+  width: 100%;
+  margin: clamp(0.8rem, 1.5vw, 1rem) 0;
+}
+
+.keep-btn form{
   width: clamp(40%, 50%, 60%);
-  height: clamp(2rem, 2vw, 1rem);
   min-width: 150px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.keep-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1rem, 1vw, 1rem);
+  width: 100%;
+  background-color: var(--tx3);
+  border: none;
+  border-radius: clamp(10px, 1.5vw, 1rem);
   padding: clamp(0.6rem, 1.2vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
-  color: rgb(71, 71, 71);
+  color: var(--bg);
   font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  gap: 1rem;
 }
 
-.keep-btn:hover{
+.keep-button:hover{
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.keep-btn a{
-  text-decoration: none;
+.keep-button img{
+  width: clamp(20px, 3vw, 24px);
+  height: clamp(20px, 3vw, 24px);
 }
 
 /* レスポンシブ */
@@ -211,10 +225,18 @@ body{
     font-size: clamp(0.85rem, 3vw, 1rem);
   }
 
-  .keep-btn {
+  .keep-btn form {
     width: 80%;
     max-width: 200px;
-    height: 2.8rem;
+  }
+
+  .keep-button {
+    padding: 0.7rem 1.2rem;
     font-size: clamp(0.9rem, 4vw, 1.05rem);
+  }
+
+  .keep-button img {
+    width: 20px;
+    height: 20px;
   }
 }

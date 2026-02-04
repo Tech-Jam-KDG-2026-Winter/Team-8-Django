@@ -30,10 +30,15 @@
           <br>-- text -- text -- text -- text -- text -- text
         </div>
       </div>
-      <div class="keep-btn">
-        <img src="static/images/keep.svg" alt="保存アイコン" width="24" height="24">保存する
-      </div>
-
+<div class="keep-btn">
+  <form method="post" action="{% url 'contents:detail' pk=post.id %}">
+    {% csrf_token %}
+    <button type="submit" class="keep-button">
+      <img src="{% static 'images/keep.svg' %}" alt="保存アイコン" width="24" height="24">
+      保存する
+    </button>
+  </form>
+</div>
     </div>
   </div>
 

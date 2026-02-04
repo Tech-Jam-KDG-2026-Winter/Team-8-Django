@@ -24,8 +24,8 @@
 }
 
 .home-container-1{
-  flex: 0 0 60%;
-  max-width: 60%;
+  flex: 0 0 50%;
+  max-width: 50%;
   background-color: var(--bg5);
   padding: clamp(0.8rem, 1.5vw, 1.2rem);
   border-radius: 1rem;
@@ -97,15 +97,14 @@
 }
 
 .home-container-2{
-  width: 30%;
-  max-width: 400px;
+  width: 50%;
+  max-width: 500px;
   background-color: var(--bg4);
   padding: clamp(0.8rem, 1.5vw, 1rem);
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   position: fixed;
   right: clamp(1rem, 4%, 4rem);
-  bottom: 10%;
 }
 
 .score-1{

@@ -20,13 +20,13 @@
           {% if post.image %}
             <img src="{{ post.image.url }}" alt="{{ post.title }}">
           {% else %}
-            {% load static %}
             <img src="{% static 'images/giraffe.png' %}" alt="no image">
           {% endif %}
           <h4>{{ post.title }}</h4>
         </a>
       </div>
   </div>
+</div>
 </div>
     <div class="home-container-2-spacer"></div>
 

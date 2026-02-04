@@ -143,6 +143,8 @@
   border-radius: 10px;
   background-color: #EAEAEA;
   text-align: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* レスポンシブ */

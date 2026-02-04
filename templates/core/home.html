@@ -52,23 +52,15 @@
       <div class="menu-item">
         <h2>献立提案</h2>
         <div class="menu-item-images">
-
-          {% for recipe in recipes %}
           <div class="menu-img">
-            <a href="{% url 'core:detail' recipe.pk %}">
-              {% if recipe.image %}
-              <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}"
-                style="width:100%; height:100%; object-fit:cover;">
-              {% else %}
-              <img src="{% static 'images/giraffe.png' %}" alt="No Image"
-                style="width:100%; height:100%; object-fit:cover;">
-              {% endif %}
-            </a>
+            <img src="{% static 'images/home1' %}" alt="朝の献立">
           </div>
-          {% empty %}
-          <p>現在提案できるレシピがありません。</p>
-          {% endfor %}
-
+          <div class="menu-img">
+            <img src="{% static 'images/home2' %}" alt="昼の献立">
+          </div>
+          <div class="menu-img">
+            <img src="{% static 'images/home3' %}" alt="夜の献立">
+          </div>
         </div>
       </div>
     </div>

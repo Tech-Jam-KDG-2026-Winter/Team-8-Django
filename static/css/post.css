@@ -12,6 +12,7 @@
 
 *{
   overflow-x: hidden;
+  scrollbar-width: none;
 }
 
 body{
@@ -20,25 +21,35 @@ body{
 
 input{
   width: 100%;
-  height: 35vh;
   border-radius: clamp(15px, 2vw, 20px);
-  margin-bottom: clamp(1rem, 2vw, 1.5rem);
   border: none;
   background-color: var(--bg);
   padding: clamp(0.8rem, 1.5vw, 1rem);
   font-size: clamp(0.9rem, 1.5vw, 1rem);
-  box-shadow: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input:focus{
-  outline: none;
+textarea{
+  width: 100%;
+  border-radius: clamp(15px, 2vw, 20px);
+  border: none;
+  background-color: var(--bg);
+  padding: clamp(0.8rem, 1.5vw, 1rem);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical;
+  font-family: inherit;
 }
 
-input::placeholder{
+input:focus, textarea:focus{
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+input::placeholder, textarea::placeholder{
   color: #999;
-  padding-left: 0;
-  text-align: center;
 }
 
 .post-section{
@@ -57,12 +68,13 @@ input::placeholder{
   background-color: var(--bg5);
   border-radius: clamp(15px, 2vw, 20px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(0.1rem, 0.3vw, 0.2rem);
 }
 
 .post-title h2{
   color: var(--tx);
   font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0;
 }
 
 .post-item{
@@ -77,6 +89,8 @@ input::placeholder{
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: clamp(15px, 2vw, 20px);
+  padding: clamp(0.8rem, 1.5vw, 1rem);
 }
 
 .image-preview-container, .text-preview-container{
@@ -87,7 +101,6 @@ input::placeholder{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: clamp(0.8rem, 1.5vw, 1rem);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -101,19 +114,34 @@ input::placeholder{
 }
 
 .text-preview-container{
-  padding: 0;
-  overflow: hidden;
+  padding: clamp(0.6rem, 1vw, 1rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.2rem, 0.4vw, 0.5rem);
+  justify-content: flex-start;
+  height: 18rem;
 }
 
 .text-preview-container input{
-  height: 100%;
+  height: clamp(2.5rem, 4vw, 3rem);
   margin-bottom: 0;
-  border-radius: clamp(15px, 2vw, 20px);
+  border-radius: clamp(13px, 1.8vw, 18px);
+  border: 1px solid rgba(128, 128, 128, 0.557);
+}
+
+.text-preview-container textarea{
+  min-height: clamp(4rem, 0, 4rem);
+  margin-bottom: 0;
+  border-radius: clamp(13px, 1.8vw, 18px);
+  border: 1px solid rgba(128, 128, 128, 0.557);
 }
 
 .text-preview-container:focus-within{
   border-color: var(--tx2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
 }
 
 .image-preview-container img{
@@ -233,8 +261,13 @@ input[type="file"]{
     margin-bottom: 0.8rem;
   }
 
-  input {
-    height: 25vh;
+  .text-preview-container input {
+    height: 2.5rem;
+    font-size: clamp(0.85rem, 3vw, 1rem);
+  }
+
+  .text-preview-container textarea {
+    min-height: 4rem;
     font-size: clamp(0.85rem, 3vw, 1rem);
   }
 

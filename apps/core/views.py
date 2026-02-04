@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect ,get_object_or_404 # redirectを追加
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Recipe
 from .models import HealthProfile, DailyHealthLog
 import datetime 
+from apps.contents.models import MenuPost 
 
 @login_required
 def recommend_view(request):
@@ -81,10 +82,8 @@ def dashboard_view(request):
     if not hasattr(user, 'health_profile'):
         HealthProfile.objects.create(user=user)
 
-    # 3. フォームからPOSTが来た場合の処理（★ここを実装！）
+    # 3. フォームからPOSTが来た場合の処理
     if request.method == 'POST':
-        # 画面の入力フォーム(name="xxx")から値を受け取る
-        
         # A. 運動
         if 'movement_diff' in request.POST:
             daily_log.movement_diff = int(request.POST['movement_diff'])
@@ -93,7 +92,7 @@ def dashboard_view(request):
         if 'meals_count' in request.POST:
             daily_log.meals_count = int(request.POST['meals_count'])
 
-        # C. チェックボックス系（チェックがあればTrue, なければFalseになる）
+        # C. チェックボックス系
         daily_log.protein_ok = 'protein_ok' in request.POST
         daily_log.veggies_ok = 'veggies_ok' in request.POST
         daily_log.late_night_meal = 'late_night_meal' in request.POST
@@ -103,12 +102,13 @@ def dashboard_view(request):
         # 保存する
         daily_log.save()
         
-        # 「再読み込み」して二重送信を防ぐ（PRGパターン）
+        # PRGパターンでリダイレクト
         return redirect('core:dashboard')
 
     # 4. スコア計算
     score, advice_list = daily_log.calculate_score()
 
+    # 5. 献立提案（公式レシピ）の取得
     current_hour = datetime.datetime.now().hour
     if 4 <= current_hour < 11:
         current_category = 'morning'
@@ -122,11 +122,15 @@ def dashboard_view(request):
     if not recipes:
         recipes = Recipe.objects.all().order_by('?')[:3]
 
+    # 6. 目標スコア計算
     target_score = 80
     if hasattr(user, 'health_profile'):
         target_score = user.health_profile.target_score
 
     points_to_target = max(0, target_score - score)
+
+    # 新しい順（idの降順）で取得する
+    posts = MenuPost.objects.order_by('-id')
 
     context = {
         'score': score,
@@ -134,7 +138,8 @@ def dashboard_view(request):
         'points_to_target': points_to_target,
         'advice_list': advice_list,
         'daily_log': daily_log, 
-        'recipes': recipes,
+        'recipes': recipes, # 公式レシピ（献立提案用）
+        'posts': posts,     # ★追加：みんなの投稿（HTMLで for post in posts と使う）
     }
 
     return render(request, 'core/home.html', context)

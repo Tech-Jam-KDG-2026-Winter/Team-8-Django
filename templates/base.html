@@ -43,7 +43,7 @@
         <a class="homelink" href="{% url 'core:dashboard' %}">
           <img src="{% static 'images/home.svg' %}" alt="ホームアイコン" width="24" height="24">ホーム
         </a>
-        <a class="detaillink" href="{% url 'contents:detail' pk=1 %}">
+        <a class="detaillink" href="{% url 'core:detail' 1 %}">
           <img src="{% static 'images/detail.svg' %}" alt="メモアイコン" width="24" height="24">献立詳細
         </a>
         <a class="mypagelink" href="{% url 'accounts:profile' %}">

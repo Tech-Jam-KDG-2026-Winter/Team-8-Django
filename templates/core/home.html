@@ -24,6 +24,11 @@
               <h4>{{ post.title }}</h4>
             </a>
           </div>
+        {% empty %}
+          <p>投稿がまだありません。</p>
+        {% endfor %}
+      </div>
+      
       </div>
     </div>
 

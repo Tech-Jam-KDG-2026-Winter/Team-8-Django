@@ -12,18 +12,61 @@
 
 ```
 tec-jam/
+├─ manage.py
+├─ requirements.txt
+├─ config/
+│  ├─ settings.py
+│  ├─ urls.py
+│  ├─ wsgi.py
+│  └─ asgi.py
 ├─ apps/
-│  ├─ core/        # ダッシュボード・レシピ表示
-│  ├─ contents/    # 投稿（みんなの投稿）
-│  └─ accounts/    # ログイン/サインアップ/マイページ
-├─ config/         # Django 設定（settings/urls/wsgi/asgi）
-├─ templates/      # 共通テンプレート
-├─ static/         # CSS/JS/画像
-├─ media/          # アップロード画像（開発時）
-├─ data.csv        # レシピ初期データ（CSV）
-├─ make_csv.py     # data.csv 生成スクリプト
-└─ manage.py
-```
+│  ├─ core/
+│  │  ├─ models.py
+│  │  ├─ views.py
+│  │  ├─ urls.py
+│  │  ├─ migrations/
+│  │  └─ management/commands/
+│  │     └─ import_recipes.py
+│  ├─ contents/
+│  │  ├─ models.py
+│  │  ├─ views.py
+│  │  ├─ urls.py
+│  │  ├─ forms.py
+│  │  ├─ migrations/
+│  │  └─ management/commands/
+│  │     └─ seed_posts.py
+│  └─ accounts/
+│     ├─ models.py
+│     ├─ views.py
+│     ├─ urls.py
+│     ├─ forms.py
+│     ├─ signals.py
+│     └─ migrations/
+├─ templates/
+│  ├─ base.html
+│  ├─ components/
+│  │  └─ card.html
+│  ├─ core/
+│  │  ├─ home.html
+│  │  └─ detail.html
+│  ├─ contents/
+│  │  ├─ post.html
+│  │  └─ post-detail.html
+│  └─ accounts/
+│     ├─ signup.html
+│     ├─ login.html
+│     ├─ signin.html
+│     ├─ mypage.html
+│     ├─ mypage-edit.html
+│     └─ logout_confirm.html
+├─ static/
+│  ├─ css/
+│  ├─ js/
+│  │  └─ main.js
+│  └─ images/
+├─ data.csv
+├─ make_csv.py
+└─ db.sqlite3
 
 ---
 

@@ -10,7 +10,7 @@
 
   <div class="signin-section">
     <div class="signin-logo">
-      <img src="static/images/logo.svg" alt="logo">
+      <img src="{% static 'images/logo.svg' %}" alt="logo">
     </div>
     <form method="POST">
       {% csrf_token %}
@@ -34,7 +34,7 @@
       </div>
     </form>
     <div class="login-link">
-      <a href="login.html">ログインはこちらから</a>
+      <a href="{% url 'accounts:login' %}">ログインはこちらから</a>
     </div>
   </div>
 

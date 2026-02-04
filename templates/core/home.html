@@ -1,143 +1,133 @@
-{% load static %} <!DOCTYPE html>
-<html lang="ja">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tec-jam(team8)</title>
-  
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/home.css' %}">
-</head>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
+{% block content %}
+<main>
+  <div class="home-main">
 
-<body>
-<header>
-    <div class="user-1">
-        <div class="score-txt">今日のスコア: {{ score }}</div>
-        <div class="score-img">
-            <img src="{% static 'images/homescore.png' %}" alt="">
+    <div class="home-container-1">
+      <h2>みんなの投稿</h2>
+      <div class="all-post">
+        <div class="user-post">
+          <a href="{% url 'contents:detail' %}">
+            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
+            <h4>123Cal</h4>
+          </a>
         </div>
-    </div>
-
-    <div class="user-2">
-      <div class="header-main-1">
-        <a href="#"><img src="{% static 'images/logo.svg' %}" alt="app-loogo"></a>
-        <p>頑張らなくても、毎日の食事だけで健康に。</p>
+        <div class="user-post">
+          <a href="{% url 'contents:detail' %}">
+            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
+            <h4>123Cal</h4>
+          </a>
+        </div>
+        <div class="user-post">
+          <a href="{% url 'contents:detail' %}">
+            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
+            <h4>123Cal</h4>
+          </a>
+        </div>
+        <div class="user-post">
+          <a href="{% url 'contents:detail' %}">
+            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
+            <h4>123Cal</h4>
+          </a>
+        </div>
+        <div class="user-post">
+          <a href="{% url 'contents:detail' %}">
+            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
+            <h4>123Cal</h4>
+          </a>
+        </div>
+        <div class="user-post">
+          <a href="{% url 'contents:detail' %}">
+            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
+            <h4>123Cal</h4>
+          </a>
+        </div>
+        <div class="user-post">
+          <a href="{% url 'contents:detail' %}">
+            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
+            <h4>123Cal</h4>
+          </a>
+        </div>
+        <div class="user-post">
+          <a href="{% url 'contents:detail' %}">
+            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
+            <h4>123Cal</h4>
+          </a>
+        </div>
       </div>
-      <div class="header-main-2">
-        {% if user.is_authenticated %}
-        <a href="#"><img src="{% static 'images/account.svg' %}" alt="icon"></a>
-        {% else %}
-        {% endif %}
+      <a href="{% url 'core:dashboard' %}" class="reload">更新</a>
+    </div>
+    <div class="home-container-2-spacer"></div>
+
+    <div class="home-container-2">
+
+      <div class="score-item">
+        <div class="score-1">
+          <h3>目標スコアまであと{{ points_to_target }}！</h3>
+          <small>まずは３個から始めてみましょう。</small>
+
+          {% for advice in advice_list %}
+          <h4>やること{{ forloop.counter }}</h4>
+          <p>{{ advice }}</p>
+          {% empty %}
+          <h4>完璧です！</h4>
+          <p>今の調子を維持しましょう。</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="menu-item">
+        <h2>献立提案</h2>
+        <div class="menu-item-images">
+
+          {% for recipe in recipes %}
+          <div class="menu-img">
+            <a href="{% url 'core:detail' recipe.pk %}">
+              {% if recipe.image %}
+              <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}"
+                style="width:100%; height:100%; object-fit:cover;">
+              {% else %}
+              <img src="{% static 'images/giraffe.png' %}" alt="No Image"
+                style="width:100%; height:100%; object-fit:cover;">
+              {% endif %}
+            </a>
+          </div>
+          {% empty %}
+          <p>現在提案できるレシピがありません。</p>
+          {% endfor %}
+
+        </div>
       </div>
     </div>
-</header>
+  </div>
+</main>
+<footer>
+  <div class="bottom-2">
+    <nav>
+      <a class="homelink" href="{% url 'core:dashboard' %}">
+        <img src="{% static 'images/home.svg' %}" alt="ホームアイコン" width="24" height="24">ホーム
+      </a>
 
-  <main>
-    <div class="home-main">
-      
-      <div class="home-container-1">
-        <h2>みんなの投稿</h2>
-        <div class="all-post">
-          <div class="user-post">
-              <a href="post-detail.html">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-             </a>
-          </div>
-          <div class="user-post">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </div>
-          <div class="user-post">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </div>
-          <div class="user-post">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </div>
-          <div class="user-post">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </div>
-          <div class="user-post">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </div>
-          <div class="user-post">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </div>
-          <div class="user-post">
-            <img src="static/images/giraffe.png" alt="みんなの投稿画像">
-            <h4>123Cal</h4>
-          </div>
-          </div>
-        <a href="#" class="reload">更新</a>
-      </div>
-      <div class="home-container-2-spacer"></div>
+      <a class="detaillink" href="#">
+        <img src="{% static 'images/detail.svg' %}" alt="詳細アイコン" width="24" height="24">献立詳細
+      </a>
 
-      <div class="home-container-2">
+      <a class="mypagelink" href="mypage.html">
+        <img src="{% static 'images/mypage.svg' %}" alt="マイページアイコン" width="24" height="24">マイページ
+      </a>
 
-        <div class="score-item">
-          <div class="score-1">
-            <h3>目標スコアまであと{{ points_to_target }}！</h3>
-            <small>まずは３個から始めてみましょう。</small>
-            
-            {% for advice in advice_list %}
-                <h4>やること{{ forloop.counter }}</h4>
-                <p>{{ advice }}</p>
-            {% empty %}
-                <h4>完璧です！</h4>
-                <p>今の調子を維持しましょう。</p>
-            {% endfor %}
-          </div>
-        </div>
-        <div class="menu-item">
-          <h2>献立提案</h2> 
-          <div class="menu-item-images">
-            
-            {% for recipe in recipes %}
-                <div class="menu-img">
-                  <a href="{% url 'core:detail' recipe.pk %}">
-                    {% if recipe.image %}
-                        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="width:100%; height:100%; object-fit:cover;">
-                    {% else %}
-                        <img src="{% static 'images/giraffe.png' %}" alt="No Image" style="width:100%; height:100%; object-fit:cover;">
-                    {% endif %}
-                  </a>
-                </div>
-            {% empty %}
-                <p>現在提案できるレシピがありません。</p>
-            {% endfor %}
-
-          </div>
-        </div>
-        </div>
-    </div>
-  </main>
-  <footer>
-    <div class="bottom-2">
-      <nav>
-        <a class="homelink" href="{% url 'core:dashboard' %}">
-            <img src="{% static 'images/home.svg' %}" alt="ホームアイコン" width="24" height="24">ホーム
-        </a>
-        
-        <a class="detaillink" href="#">
-            <img src="{% static 'images/detail.svg' %}" alt="詳細アイコン" width="24" height="24">献立詳細
-        </a>
-        
-        <a class="mypagelink" href="mypage.html">
-            <img src="{% static 'images/mypage.svg' %}" alt="マイページアイコン" width="24" height="24">マイページ
-        </a>
-        
-        <a class="postlink" href="post.html">
-            <img src="{% static 'images/post.svg' %}" alt="投稿アイコン" width="24" height="24">投稿
-        </a>
-      </nav>
-    </div>
-  </footer>
+      <a class="postlink" href="post.html">
+        <img src="{% static 'images/post.svg' %}" alt="投稿アイコン" width="24" height="24">投稿
+      </a>
+    </nav>
+  </div>
+</footer>
 </body>
+
 </html>

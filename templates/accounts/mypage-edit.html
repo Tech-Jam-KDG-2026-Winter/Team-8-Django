@@ -57,7 +57,7 @@
           </div>
         </div>
         <div class="save-btn">
-        <a href="mypage.html"><button type="submit"><img src="static/images/save.svg" alt="保存アイコン" width="24" height="24">保存する</button></a>
+        <a href="{% url 'accounts:profile' %}"><button type="submit"><img src="{% static 'images/save.svg' %}" alt="保存アイコン" width="24" height="24">保存する</button></a>
         </div>
       </div>
     </form>

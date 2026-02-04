@@ -9,24 +9,33 @@
 }
 
 *{
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+body{
+  overflow-y: auto;
+  max-width: 100%;
 }
 
 .post-detail-main{
-  margin: 0 2rem 5rem 2rem;
+  margin: 0 clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: clamp(1.5rem, 4vw, 3rem);
   align-items: flex-start;
-  padding: 1rem;
+  padding: clamp(0.5rem, 1.5vw, 1rem);
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .post-detail-container-1{
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1 1 50%;
+  min-width: 300px;
 }
 
 .post-detail-container-1 img{
@@ -34,39 +43,142 @@
   height: 70vh;
   object-fit: cover;
   object-position: center;
-  border-radius: 20px;
-  scale: 0.8;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: clamp(10px, 2vw, 20px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  scale: 0.7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .post-detail-container-1 img:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: scale(0.95);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
 
 .post-detail-container-2{
-  padding: 2rem;
+  padding: clamp(1rem, 2.5vw, 2rem);
   width: 40%;
+  min-width: 300px;
   height: 60vh;
   background-color: var(--bg4);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .post-detail-item{
-  padding: 1rem;
+  padding: clamp(0.8rem, 1.5vw, 1rem);
+}
+
+.post-detail-item h3{
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  margin-bottom: 0.5rem;
+}
+
+.post-detail-item p{
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.6;
 }
 
 .user-name{
-  margin-bottom: 2rem;
+  margin-bottom: clamp(0.8rem, 1.5vw, 1rem);
+}
+
+.user-name h2{
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
 }
 
 .post-detail-all{
-  padding: 1rem;
+  margin-bottom: clamp(0.8rem, 1.5vw, 1rem);
+  padding: clamp(0.8rem, 1.5vw, 1rem);
   background-color: var(--bg2);
-  border-radius: 10px;
+  border-radius: clamp(8px, 1.5vw, 10px);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.post-detail-all h3{
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  margin-bottom: 0.5rem;
+}
+
+.post-detail-all p{
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.6;
+}
+
+/* レスポンシブ */
+@media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .post-detail-main {
+    margin: 0;
+    padding: 0.5rem;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .post-detail-container-1 {
+    margin-top: -3rem;
+    width: 100%;
+    min-width: auto;
+  }
+
+  .post-detail-container-1 img {
+    height: 40vh;
+    border-radius: 10px;
+    scale: 0.7;
+  }
+
+  .post-detail-container-1 img:hover {
+    transform: scale(1);
+  }
+
+  .post-detail-container-2 {
+    margin: -5rem auto 0 auto;
+    width: calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+    min-width: auto;
+    height: auto;
+    border-radius: 8px;
+    scale: 0.8;
+  }
+
+  .post-detail-item {
+    padding: 0.8rem;
+  }
+
+  .post-detail-item h3 {
+    font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+  }
+
+  .post-detail-item p {
+    font-size: clamp(0.85rem, 3vw, 1rem);
+  }
+
+  .user-name {
+    margin-bottom: 0.8rem;
+  }
+
+  .user-name h2 {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+  }
+
+  .post-detail-all {
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+
+  .post-detail-all h3 {
+    font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+  }
+
+  .post-detail-all p {
+    font-size: clamp(0.85rem, 3vw, 1rem);
+  }
 }

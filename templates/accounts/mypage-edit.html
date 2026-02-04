@@ -41,9 +41,11 @@
           </div>
           <p style="margin-top:12px;">性別</p>
           <select name="gender" style="width:100%; padding:8px;">
-            <option value="male" {% if profile.gender=="male" %}selected{% endif %}>男性</option>
-            <option value="female" {% if profile.gender=="female" %}selected{% endif %}>女性</option>
-            <option value="other" {% if profile.gender=="other" %}selected{% endif %}>その他</option>
+            <option value="male" {% if profile.gender == "male" %} selected{% endif %}>男性</option>
+            <option value="female" {% if profile.gender == "female" %} selected{% endif %}>女性</option>
+            <option value="other" {% if profile.gender == "other" %} selected{% endif %}>その他</option>
+            <!---　これは == 　見たいにスペース開けないとエラー   -->>
+
           </select>
         </div>
 

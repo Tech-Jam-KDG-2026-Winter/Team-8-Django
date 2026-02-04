@@ -1,18 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/logout-confilm.css' %}">
+{% endblock %}
+
 {% block title %}ログアウト確認{% endblock %}
 
 {% block content %}
-<div class="logout-section" style="max-width: 420px; margin: 40px auto; padding: 24px;">
-    <h1 style="margin: 0 0 16px;">ログアウトしますか？</h1>
+<div class="logout-section">
+    <h1>ログアウトしますか？</h1>
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit" style="padding: 10px 16px;">ログアウト</button>
+        <button type="submit">ログアウト</button>
     </form>
 
-    <p style="margin-top: 16px;">
+    <p">
         <a href="{% url 'accounts:profile' %}">キャンセル（戻る）</a>
     </p>
 </div>

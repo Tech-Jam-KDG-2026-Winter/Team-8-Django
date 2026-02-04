@@ -7,78 +7,83 @@
 {% endblock %}
 
 {% block content %}
-  <main>
-    <div class="mypage-main">
-      <div class="mypage-container-1">
-        <h2>保存した料理</h2>
-        <div class="keep-all-post">
-          <div class="keep-post">
-            <h3># keepuserpost</h3>
-            <!-- 投稿ページの追加 -->
-          </div>
-          <div class="keep-post">
-            <h3># keepuserpost</h3>
-            <!-- 投稿ページの追加 -->
-          </div>
-          <div class="keep-post">
-            <h3># keepuserpost</h3>
-            <!-- 投稿ページの追加 -->
-          </div>
-          <div class="keep-post">
-            <h3># keepuserpost</h3>
-            <!-- 投稿ページの追加 -->
-          </div>
-          <div class="keep-post">
-            <h3># keepuserpost</h3>
-            <!-- 投稿ページの追加 -->
-          </div>
-          <div class="keep-post">
-            <h3># keepuserpost</h3>
-            <!-- 投稿ページの追加 -->
-          </div>
-          <div class="keep-post">
-            <h3># keepuserpost</h3>
-            <!-- 投稿ページの追加 -->
-          </div>
-          <div class="keep-post">
-            <h3># keepuserpost</h3>
-            <!-- 投稿ページの追加 -->
-          </div>
+<main>
+  <div class="mypage-main">
+    <div class="mypage-container-1">
+      <h2>保存した料理</h2>
+      <div class="keep-all-post">
+        <div class="keep-post">
+          <h3># keepuserpost</h3>
+          <!-- 投稿ページの追加 -->
+        </div>
+        <div class="keep-post">
+          <h3># keepuserpost</h3>
+          <!-- 投稿ページの追加 -->
+        </div>
+        <div class="keep-post">
+          <h3># keepuserpost</h3>
+          <!-- 投稿ページの追加 -->
+        </div>
+        <div class="keep-post">
+          <h3># keepuserpost</h3>
+          <!-- 投稿ページの追加 -->
+        </div>
+        <div class="keep-post">
+          <h3># keepuserpost</h3>
+          <!-- 投稿ページの追加 -->
+        </div>
+        <div class="keep-post">
+          <h3># keepuserpost</h3>
+          <!-- 投稿ページの追加 -->
+        </div>
+        <div class="keep-post">
+          <h3># keepuserpost</h3>
+          <!-- 投稿ページの追加 -->
+        </div>
+        <div class="keep-post">
+          <h3># keepuserpost</h3>
+          <!-- 投稿ページの追加 -->
         </div>
       </div>
-
-
-      <div class="mypage-container-2">
-        <div class="edit-btn">
-          <div class="profile-edit">
-            <img src="{% static 'images/edit.svg' %}" alt="編集アイコン" width="24" height="24">
-            <a href="mypage-edit.html">
-              <p>編集する</p>
-            </a>
-          </div>
-        </div>
-        <div class="user-name">
-          <h2>名前{{ registration_user_name }}</h2>
-        </div>
-
-        <div class="profile">
-          <h3>プロフィール</h3>
-          <div class="profile-detail">
-            <p>年齢　{{ user_age }}</p>
-            <p>身長　{{ user_height }}</p>
-            <p>体重　{{ user_weight }}</p>
-            <p>性別　{{ user_gender }}</p>
-          </div>
-        </div>
-        <div class="score">
-          <h3>スコア</h3>
-          <div class="score-graph">
-            {{ month_score_graph }}
-          </div>
-        </div>
-      </div>
-
     </div>
-  </main>
+
+
+    <div class="mypage-container-2">
+      <div class="edit-btn">
+        <div class="profile-edit">
+          <img src="{% static 'images/edit.svg' %}" alt="編集アイコン" width="24" height="24">
+          <a href="mypage-edit.html">
+            <p>編集する</p>
+          </a>
+        </div>
+      </div>
+      <div class="user-name">
+        <h2>名前{{ registration_user_name }}</h2>
+      </div>
+
+      <div class="profile">
+        <h3>プロフィール</h3>
+        <div class="profile-detail">
+          <p>年齢　{{ user_age }}</p>
+          <p>身長　{{ user_height }}</p>
+          <p>体重　{{ user_weight }}</p>
+          <p>性別　{{ user_gender }}</p>
+        </div>
+      </div>
+      <div class="score">
+        <h3>スコア</h3>
+        <div class="score-graph">
+          {{ month_score_graph }}
+        </div>
+      </div>
+      <div class="profile-logout">
+        <img src="static/images/logout.svg" alt="ログアウトアイコン" width="24" height="24">
+        <a href="logout-confilm.html">
+          <p>ログアウト</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
 
 {% endblock %}

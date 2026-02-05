@@ -22,7 +22,7 @@
     <div class="post-detail-container-2">
       <div class="post-detail-item">
         <div class="user-name">
-          <h2>@user_name{{ user_name }}</h2>
+          <h2>{{ post.user.username }}</h2>
         </div>
         <div class="post-detail-all">
           <h3>{{ post.title }}</h3>
@@ -34,7 +34,7 @@
   <form method="post" action="{% url 'contents:detail' pk=post.id %}">
     {% csrf_token %}
     <button type="submit" class="keep-button">
-      <img src="{% static 'images/keep.svgg' %}" alt="保存アイコン" width="24" height="24">
+      <img src="{% static 'images/keep.svg' %}" alt="保存アイコン" width="24" height="24">
       保存する
     </button>
   </form>
